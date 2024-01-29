@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>Card Game</title>
+</head>
+<body>
+  <header>
+    <h1>Card of Chaos</h1>
+    <p>Welcome, adventurer! Draw three cards and embark on a magical journey through different worlds.</p>
+  </header>
+
+  <button id="viewDetailsBtn" onclick="Travel()">Travel</button>
+  
+  <section id="cardSection">
+    <div id="cards"></div>
+    <div id="deck" onclick="drawCards()">Draw Three Cards</div>
+  </section>
+
+
+  <button id="openModal">Controls</button>
+  <div class="modal" id="modal">
+    <div class="modal-inner">
+      <div class="image-container">
+        <img src="Images/—Pngtree—keyboard stereo shadow arrow keys_7260322.png" alt="Arrow Keys">
+        <p>Arrow Keys For Movement</p>
+      </div>
+  
+      <div class="image-container">
+        <img src="Images/Flame jett.png" alt="Second Image">
+        <p>Q - Flame Jett attack</p>
+      </div>
+  
+      <div class="image-container">
+        <img src="Images/Attack.png" alt="Third Image">
+        <p>E - Melee</p>
+      </div>
+  
+      <div class="button-container">
+        <button id="closeModal">Close</button>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+
+  <script src="JavaScript/script.js"></script>
+</body>
+</html>
