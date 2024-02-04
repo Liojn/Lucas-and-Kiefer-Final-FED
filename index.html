@@ -15,8 +15,8 @@
     <p>Welcome, adventurer! Draw three cards and embark on a magical journey through different worlds.</p>
   </header>
 
-  
-  <button id="viewDetailsBtn" onclick="Travel()">Travel</button>
+  <div id="loadingOverlay" class="loading-overlay"></div>
+  <img id="viewDetailsBtn" src="Images/Loop_Portal.webp" alt="Travel" onclick="Travel()">
   
   <section id="cardSection">
     <div id="cards"></div>
@@ -42,8 +42,6 @@
       </div>
     </div>
 
-
-
   <button id="openModal">Controls</button>
   <div class="modal" id="modal">
     <div class="modal-inner">
@@ -68,7 +66,7 @@
     </div>
   </div>
 
-
+  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
   <script src="JavaScript/script.js"></script>
 </body>
 </html>

@@ -87,8 +87,14 @@ document.addEventListener('DOMContentLoaded', () => {
   closeSignInModalBtn.addEventListener('click', closeSignInModal);
 });
 
-
 function drawCards() {
+  const deckButton = document.getElementById('deck');
+  const overlay = document.getElementById('loadingOverlay');
+
+  // Clear the inner HTML of the deck button and append the Lottie animation to the overlay
+  overlay.innerHTML = '<dotlottie-player id="lottieAnimation" src="https://lottie.host/8cc8fe6f-e5a0-4935-aa22-0a72fd3f61a7/5FczAEXp3y.json" background="transparent" speed="1" style="width: 100vw; height: 100vh;" autoplay></dotlottie-player>';
+  overlay.style.display = 'block';
+
   // Fetch 9 cards from the Deck of Cards API
   fetch('https://deckofcardsapi.com/api/deck/new/draw/?count=9')
     .then(response => response.json())
@@ -97,12 +103,23 @@ function drawCards() {
       const cards = data.cards.slice(0, 3); // Select 3 cards randomly
       displayCards(cards);
 
-      // Show the "View Details" button
       const viewDetailsBtn = document.getElementById('viewDetailsBtn');
       viewDetailsBtn.style.display = 'block';
+
+      // Stop the Lottie animation
+      const lottieAnimation = document.getElementById('lottieAnimation');
+      if (lottieAnimation) {
+        lottieAnimation.stop();
+      }
     })
     .catch(error => {
       console.error('Error fetching cards:', error);
+    })
+    .finally(() => {
+      // Delayed removal of loading overlay after 3 seconds
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 2000);
     });
 }
 
