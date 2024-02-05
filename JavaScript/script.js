@@ -1,4 +1,4 @@
-
+let world;
 // Function to handle the sign-in process
 function signIn() {
   const emailInput = document.getElementById('email');
@@ -88,11 +88,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function drawCards() {
-  const deckButton = document.getElementById('deck');
+
   const overlay = document.getElementById('loadingOverlay');
 
   // Clear the inner HTML of the deck button and append the Lottie animation to the overlay
-  overlay.innerHTML = '<dotlottie-player id="lottieAnimation" src="https://lottie.host/8cc8fe6f-e5a0-4935-aa22-0a72fd3f61a7/5FczAEXp3y.json" background="transparent" speed="1" style="width: 100vw; height: 100vh;" autoplay></dotlottie-player>';
+  overlay.innerHTML = '<dotlottie-player id="lottieAnimation" src="https://lottie.host/008071dc-aeba-4b1c-a3d5-bd48f2797465/q81eoGd9hp.json" background="transparent" speed="1" style="width: 100vw; height: 100vh;" autoplay></dotlottie-player>';
   overlay.style.display = 'block';
 
   // Fetch 9 cards from the Deck of Cards API
@@ -101,12 +101,18 @@ function drawCards() {
     .then(data => {
       // Handle the data (e.g., extract the cards)
       const cards = data.cards.slice(0, 3); // Select 3 cards randomly
+
+      const cardValues = cards.map(card => card.value);
+      console.log(cardValues);
+      world = determineWorld(cardValues);
+  
+
       displayCards(cards);
 
       const viewDetailsBtn = document.getElementById('viewDetailsBtn');
       viewDetailsBtn.style.display = 'block';
 
-      // Stop the Lottie animation
+
       const lottieAnimation = document.getElementById('lottieAnimation');
       if (lottieAnimation) {
         lottieAnimation.stop();
@@ -116,16 +122,58 @@ function drawCards() {
       console.error('Error fetching cards:', error);
     })
     .finally(() => {
-      // Delayed removal of loading overlay after 3 seconds
+
       setTimeout(() => {
         overlay.style.display = 'none';
       }, 2000);
     });
 }
 
-function Travel() {
-  // Redirect to another JavaScript page or perform other actions
+function determineWorld(cardValues) {
+  // Example logic: Check card values and determine the world
+  if (cardValues.includes('JACK') || cardValues.includes('QUEEN')) {
+    return 'a.html';
+  } else if (cardValues.includes('ACE') || cardValues.includes('KING')) {
+    return 'b.html';
+  } else {
+    return 'c.html';
+  }
 }
+
+function Travel() {
+  const fadeOverlay = document.createElement('div');
+  fadeOverlay.classList.add('fade-overlay');
+  document.body.appendChild(fadeOverlay);
+
+  // Create the Lottie animation element
+  const lottieAnimation = document.createElement('dotlottie-player');
+  lottieAnimation.src = "https://lottie.host/4d4a9859-3727-40bb-a2c2-ace3a7643669/cKeyCbL7v9.json";
+  lottieAnimation.style.width = "300px";
+  lottieAnimation.style.height = "300px";
+  lottieAnimation.style.display = "block";
+
+  // Create a container for the Lottie animation and center it
+  const lottieContainer = document.createElement('div');
+  lottieContainer.classList.add('lottie-container');
+  lottieContainer.appendChild(lottieAnimation);
+
+  // Append the Lottie animation container to the fade overlay
+  fadeOverlay.appendChild(lottieContainer);
+
+  // Manually trigger the play method after a short delay
+  setTimeout(() => {
+    lottieAnimation.play();
+  },100)
+
+  // Listen for the animation complete event
+  lottieAnimation.addEventListener('complete', () => {
+    // Redirect to the determined world
+    window.location.href = world 
+    fadeOverlay.remove(); // Remove the fade overlay after the animation completes
+  });
+}
+
+
 
 function displayCards(cards) {
   const cardsContainer = document.getElementById('cards');
