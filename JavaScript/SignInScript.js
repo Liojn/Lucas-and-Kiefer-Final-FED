@@ -1,4 +1,6 @@
 let world;
+let email;
+let password;
 // Function to handle the sign-in process
 function signIn() {
   const emailInput = document.getElementById('email');
@@ -128,9 +130,8 @@ function drawCards() {
       }, 2000);
     });
 }
-
+// Determining which world you got to
 function determineWorld(cardValues) {
-  // Example logic: Check card values and determine the world
   if (cardValues.includes('JACK') || cardValues.includes('QUEEN')) {
     return 'a.html';
   } else if (cardValues.includes('ACE') || cardValues.includes('KING')) {
