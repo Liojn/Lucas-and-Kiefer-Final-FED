@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel ="stylesheet" link="TitleCSS.css"type = "text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "mainContainer">
+    <div class = "container">
+        <img src="scroll2.png" id="image-behind-header" class = "floating" alt="Image Behind Header">
+        <header>
+            <h1 class = "floating">Cards of Chaos</h1>
+        </header>
+    </div>
+    <p id = "blinkText" class = "fade-effect">Press any button to start</p>
+    </div>
+</body>
+<style>
+    .container {
+        top:10px;
+        bottom:100px;
+        position: relative;
+    }
+    body{
+      background-color: black;
+      height:100vh;
+      width:100wh;
+    }
+    .mainContainer{
+        background-image:url("TitleScreen.gif");
+        background-position: center;
+        background-size:cover; 
+        display:flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        background-size:100% 110%;
+        height:100vh;
+        margin:0;
+    }
+    header{
+        top:17%;
+        font-size:50px;
+        font-family:Pixelify Sans;
+        color:  #CC7935;
+        text-align: center;
+        text-shadow: -1px -1px 0 #5C4033, 1px -1px 0 #5C4033, -1px 1px 0 #5C4033, 1px 1px 0 #5C4033; 
+        position: relative; 
+        z-index: 2;
+    }
+    #image-behind-header {
+    position: absolute;
+    top: 0%; 
+    left:13%;
+    transform: translate(-0%, -0%); 
+    z-index: 1; /* Ensure the image is behind the header */
+    width:900px;
+    }
+    .floating {  
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    }
+    #blinkText{
+        font-size: 30px;
+        color:white;
+        position: absolute;
+        font-family:Pixelify Sans;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+ 
+    @keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }    
+    }   
+
+    @keyframes fade {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    .fade-effect {
+        animation-name: fade;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+    @media (max-width: 876px) {
+  header h1 {
+    font-size: 50px;
+  }
+
+  #blinkText {
+    font-size: 20px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  #image-behind-header {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%
+  }
+
+  /* #blinkText {
+    top: 50%;
+    transform: translateY(-50%);
+  } */
+}
+
+</style>
+<script>
+        document.addEventListener('keydown', function(event) {
+            fadeOutAndNavigate();
+        });
+
+        function fadeOutAndNavigate() {
+            document.body.style.transition = "opacity 2s";
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = "cutscene.html";
+            }, 2000); // Wait for the transition to complete
+
+        }
+</script>
+</html>

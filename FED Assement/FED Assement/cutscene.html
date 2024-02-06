@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="wizardCustscene.jpg" id="container">
+        <div class="textContainer">
+            <p id="text">Amidst the rugged expanse of Eldoria's wilderness, cloaked in the hazy glow of twilight, a solitary figure emerges, you the adventurer, driven by whispers of ancient secrets and the lure of forbidden knowledge. Guided by cryptic tales of a crumbling castle tower, rumored to house three mystical cards that transcend the boundaries of reality, your quest leads you to this castle, the precipice of your discovery.</p>
+            <p class="fade-effect">Press any button to continue</p>
+        </div>
+    </div>
+    <div id = "fadeCover"></div>
+</body>
+<style>
+     body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevent scrolling */
+        animation: fadeIn 1s ease-in forwards; /* fade in animation */
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #container {
+        background-size: 50% 50%;
+        width: 50%;
+        height: 100%;
+    }
+
+    .textContainer {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #text {
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 5s forwards; /* Apply animation */
+        text-align: center;
+    }
+
+    .fade-effect {
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        animation-name: fade;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        opacity: 1;
+        text-align: center;
+    }
+
+    @keyframes fade {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    @media screen and (max-width: 876px) {
+        .container {
+            flex-direction: column;
+            width: 100vw;
+        }
+
+        #container {
+            width: 100%;
+            height: 50vh;
+            background-size: cover;
+            background-position: top;
+        }
+
+        .textContainer {
+            width: 100%;
+            height: auto;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 20px;
+        }
+    }
+    #fadeCover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0;
+        z-index: 999; /* Ensure it covers everything */
+    }
+
+</style>
+<script>
+        document.addEventListener('keydown', function(event) {
+            fadeOutAndNavigate();
+        });
+
+        function fadeOutAndNavigate() {
+        var fadeCover = document.getElementById('fadeCover');
+        fadeCover.style.transition = "opacity 2s";
+        fadeCover.style.opacity = "1"; // Show the cover
+        setTimeout(function() {
+            window.location.href = 'index.html';
+        }, 2000); // Wait for the transition to complete
+    }
+</script>
+</html>

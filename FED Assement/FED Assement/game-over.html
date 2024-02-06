@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class = "container">
+        <h1>Game Over</h1>
+        <p class="fade-effect">Press any button to try again</p>
+    </div>
+</body>
+<style>
+body{
+    background-color: black;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+    text-align: center;
+}
+.container{
+    position:absolute;
+    text-align: center;
+    top:30%;
+}
+h1{
+    font-family: pixelify sans;
+    position:relative;
+    color: white;
+    font-size: 60px;
+
+}
+    .fade-effect {
+        position:relative;
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        animation-name: fade;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        opacity: 1;
+    }
+
+    @keyframes fade {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+</style>
+<script>
+        document.addEventListener('keydown', function(event) {
+            fadeOutAndNavigate();
+        });
+
+        function fadeOutAndNavigate() {
+            document.body.style.transition = "opacity 2s";
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = "TitleScreen.html";
+            }, 2000); // Wait for the transition to complete
+        }
+</script>
+</html>

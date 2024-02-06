@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <img src="wizardEndCutscene.png" id="container">
+        <div class="textContainer">
+            <p id="text">
+                After a hard fought battle the three cards appeared from within the monster's corpse. With trembling hands, you grasped the three cards, their power pulsing faintly against your skin. A prickling heat danced at the edges of your vision, the world around you shimmering in anticipation. You had reached the precipice, but the true test lay ahead. Could you withstand the weight of the secrets they hold, or would they consume you like the shadows creeping in from the twilight? Only time would tell</p>
+            <p id = "text">-THE END-</p>
+            <p class="fade-effect">Press any button to continue</p>
+        </div>
+    </div>
+    <div id = "fadeCover"></div>
+</body>
+<style>
+     body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+        overflow: hidden; /* Prevent scrolling */
+        animation: fadeIn 1s ease-in forwards; /* fade in animation */
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .container {
+        position: relative;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        flex-direction: row;
+    }
+
+    #container {
+        background-size: 50% 50%;
+        width: 50%;
+        height: 100%;
+    }
+
+    .textContainer {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #text {
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 5s forwards; /* Apply animation */
+        text-align: center;
+    }
+
+    .fade-effect {
+        font-family: 'Pixelify Sans', sans-serif;
+        color: white;
+        animation-name: fade;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        opacity: 1;
+        text-align: center;
+    }
+
+    @keyframes fade {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+    #fadeCover {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0;
+        z-index: 999; /* Ensure it covers everything */
+    }
+    @media screen and (max-width: 876px) {
+        .container {
+            flex-direction: column;
+            width: 100vw;
+        }
+
+        #container {
+            width: 100%;
+            height: 50vh;
+            background-size: cover;
+            background-position: top;
+        }
+
+        .textContainer {
+            width: 100%;
+            height: auto;
+            justify-content: flex-start;
+            align-items: center;
+            margin-top: 20px;
+        }
+    }
+
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const email = localStorage.getItem('userEmail')
+    const password = localStorage.getItem('userPassword')
+    updateCount(email,password)})
+
+
+    function updateCount(email, password) {
+    const APIKEY = "65966cba603c3c467f8b31d4";
+    const settings_Get = {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "x-apikey": APIKEY,
+            "Cache-Control": "no-cache"
+        }
+    };
+
+    // Fetch the user data from restDB based on email
+    fetch(`https://interactivedev-4c4e.restdb.io/rest/gamedata?q={"email":"${email}"}`, settings_Get)
+        .then(res => {
+            if (!res.ok) {
+                throw Error("Error occurred");
+            }
+            return res.json();
+        })
+        .then(data => {
+            // If user found, update the Count
+            if (data.length > 0) {
+                const user = data[0];
+                console.log(user)
+                const currentCount = user.bossDefeated;
+                const newCount = currentCount + 1;
+                console.log(newCount)
+
+                const settings_Put = {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "x-apikey": APIKEY,
+                        "Cache-Control": "no-cache"
+                    },
+                    body: JSON.stringify({
+                        email:user.email,
+                        password:user.password,
+                        bossDefeated: newCount
+                    })
+                };
+
+                // Update the user's Count
+                fetch(`https://interactivedev-4c4e.restdb.io/rest/gamedata/${user._id}`, settings_Put)
+                    .then(res => {
+                        if (!res.ok) {
+                            throw Error("Error occurred");
+                        }
+                        return res.json();
+                    })
+                    .then(updatedData => {
+                        console.log("Count updated successfully:", updatedData);
+                    })
+                    .catch(error => {
+                        console.error("Error updating count:", error);
+                    });
+            } else {
+                console.error("User not found.");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching user data:", error);
+        });
+}
+
+
+
+
+      //if key pressed redirect to title screen
+      document.addEventListener('keydown', function(event) {
+          fadeOutAndNavigate();
+      });
+      function fadeOutAndNavigate() {
+      var fadeCover = document.getElementById('fadeCover');
+      fadeCover.style.transition = "opacity 2s";
+      fadeCover.style.opacity = "1"; // Show the cover
+      setTimeout(function() {
+          window.location.href = "TitleScreen.html";
+      }, 2000); // Wait for the transition to complete
+  }
+</script>
+</html>
