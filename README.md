@@ -33,6 +33,47 @@ User Stories:
 - Feature 8:  Endless Mode: Introduce an endless mode where players can continuously face waves of enemies and bosses, testing their skills and endurance.
 - Feature 9: Community Challenges: Create community-driven challenges and events where players can collaborate or compete to earn rewards and recognition within the game.
 
+## Technologies Used
+- HTML
+- CSS
+- JavaScript
+- RestDB, used for the storing and updating of data. Such as the Sign In Page and Leaderboard (https://restdb.io/)
+- LottieFiles, used for animation such as the Loading bar (https://lottiefiles.com/)
+
+## Testing
+- Sign In Form: i.) Run the index.html page, make sure sign in pop up appears. ii.) Enter an invalid email make sure it dosen't create an acc. iii.) Enter a valid email but wrong password make sure it dosen't sign me in. iv) Enter a valid email and password, make sure it sends the data to restDB to store.
+
+- Draw 3 cards: i.) Click draw 3 cards to make sure skull lottie runs then make sure that it actually draws 3 random cards.
+- Travel: i) Click travel and make sure that the loading lottie animation completes before it travels to the world corresponding to the 3 random cards logic.
+  Interesting bug: Sometimes the Loading bar animation dosen't run when you first open VS code and run the html. error: [dotLottie-common]: Player unable to play whilst loading.
+  
+- Leaderboard: i) Click leaderboard, make sure that it shows the person with most bosses defeated as the highest rank.
+- Worlds: i) Walk around the world, make sure don't fall of map ii) Make sure when arrow key up is pressed at portal bring to boss room. iii.) After boss defeated, change to end cutscene. iv) OR if player is defeated, show game over screen
+- Character: i) Once in a world, Press arrow keys to make sure it moves the character in that direction. ii) Press Q to make sure that a flame jet attack is fireed. iii) Press E to make sure that melee attack is done.
+- index html: i) Make sure by press any key, brings to cutscene.html
+- cut scene: i) Make sure that press any key brings you to main.html
+- Game over: i) Make sure that press any key brings you to cutscene.html
+- End Cut scene: i) Make sure that press any key brings you to cutscene.html
+- Responsiveness: i) Make sure that all html pages work even when minimised.
+
+  ## Credits
+  ### Content
+  - Nothing compied
+  ### Media
+  - main.html background: https://www.deviantart.com/zedotagger/art/Dark-Souls-Altar-of-Sunlight-544007250
+  - arrows.png & up.png: https://pngtree.com/freepng/keyboard-stereo-shadow-arrow-keys_7260322.html
+  - All graveyard & sprites: https://itch.io/
+  - All player sprites & Plant boss: https://craftpix.net/
+  - Cave Environment & Cave Boss: https://itch.io/
+  - Forest environment: Unity 2D asses store
+  - Loop_Portal.webp: https://nuclear-throne.fandom.com/wiki/Pickups_and_Props?file=Loop_Portal.gif
+  - 8-bit RPG Music Boss Battle: https://www.youtube.com/watch?v=NzFKyZc_va4
+  - 8-bit RPG Music Cave Themehttps: //www.youtube.com/watch?v=YN40UybSLO4
+  - xDeviruchi - And The Journey Begins & xDeviruchi - Decisive Battle: https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack
+  - TitleScreen.gif: https://kryssalian.artstation.com/projects/nEq3K9
+  - wizardEndCutscene.png & wizardCustscene.jpg: https://creator.nightcafe.studio/
+  - Portal1.png & Portal2.png: https://.itch.io/
+
 
 
 
