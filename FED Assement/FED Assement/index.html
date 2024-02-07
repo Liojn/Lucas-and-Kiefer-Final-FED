@@ -1,89 +1,139 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css" type="text/css">
-  <title>Card Game</title>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel ="stylesheet" link="TitleCSS.css"type = "text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Card of Chaos</h1>
-    <p>Welcome, adventurer! Draw three cards and embark on a magical journey through different worlds.</p>
-  </header>
-
-
-  <div id="leaderboardModal" class="modal">
-    <div class="modal-inner">
-      <button id="closeLeaderboard" class="close-btn">&times;</button>
-      <h2>Leaderboard</h2>
-      <div id="leaderboardContent"></div>
+    <div class = "mainContainer">
+    <div class = "container">
+        <img src="scroll2.png" id="image-behind-header" class = "floating" alt="Image Behind Header">
+        <header>
+            <h1 class = "floating">Cards of Chaos</h1>
+        </header>
     </div>
-  </div>
-
-  <button id="openLeaderboard">Leaderboard</button>
-
-  
-  <div id="loadingOverlay" class="loading-overlay"></div>
-  <img id="viewDetailsBtn" src="Images/Loop_Portal.webp" alt="Travel" onclick="Travel()">
-  
-  <section id="cardSection">
-    <div id="cards"></div>
-    <div id="deck" onclick="drawCards()">Draw Three Cards</div>
-  </section>
-
-    <div id="signInModal" class="modal open">
-      <div class="modal-inner">
-        <h2>Welcome!</h2>
-        <p>Please sign in to continue</p>
-        <form id="signInForm">
-          <div class="inputbox">
-            <input type="email" id="email" required>
-            <label for="email">Email:</label>
-          </div>
-          <br>
-          <div class="inputbox">
-            <input type="password" id="password" required>
-            <label for="password">Password:</label>
-          </div>
-          <button type="button" id="signInBtn">Sign In</button>
-        </form>
-      </div>
+    <p id = "blinkText" class = "fade-effect">Press any button to start</p>
     </div>
-
-  <button id="openModal">Controls</button>
-  <div class="modal" id="modal">
-    <div class="modal-inner">
-      <div class="image-container">
-        <img src="Images/arrows.png" alt="Arrow Keys">
-        <p>Arrow Keys For Movement</p>
-      </div>
-  
-      <div class="image-container">
-        <img src="Images/Flame jett.png" alt="Second Image">
-        <p>Q - Flame Jett attack</p>
-      </div>
-  
-      <div class="image-container">
-        <img src="Images/Attack.png" alt="Third Image">
-        <p>E - Melee</p>
-      </div>
-
-      <div class = "image-container">
-        <img src="Images/up.png" alt="Fourth Image">
-        <p>Arrow Up at Portal - To enter</p>
-      </div>
-  
-      <div class="button-container">
-        <button id="closeModal">Close</button>
-      </div>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-  <script src="JavaScript/SignInScript.js"></script>
 </body>
+<style>
+    .container {
+        top:10px;
+        bottom:100px;
+        position: relative;
+    }
+    body{
+      background-color: black;
+      height:100vh;
+      width:100wh;
+    }
+    .mainContainer{
+        background-image:url("TitleScreen.gif");
+        background-position: center;
+        background-size:cover; 
+        display:flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        background-size:100% 110%;
+        height:100vh;
+        margin:0;
+    }
+    header{
+        top:17%;
+        font-size:50px;
+        font-family:Pixelify Sans;
+        color:  #CC7935;
+        text-align: center;
+        text-shadow: -1px -1px 0 #5C4033, 1px -1px 0 #5C4033, -1px 1px 0 #5C4033, 1px 1px 0 #5C4033; 
+        position: relative; 
+        z-index: 2;
+    }
+    #image-behind-header {
+    position: absolute;
+    top: 0%; 
+    left:13%;
+    transform: translate(-0%, -0%); 
+    z-index: 1; /* Ensure the image is behind the header */
+    width:900px;
+    }
+    .floating {  
+    animation-name: floating;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    }
+    #blinkText{
+        font-size: 30px;
+        color:white;
+        position: absolute;
+        font-family:Pixelify Sans;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+ 
+    @keyframes floating {
+    0% { transform: translate(0,  0px); }
+    50%  { transform: translate(0, 15px); }
+    100%   { transform: translate(0, -0px); }    
+    }   
+
+    @keyframes fade {
+        0% { opacity: 1; }
+        50% { opacity: 0; }
+        100% { opacity: 1; }
+    }
+
+    .fade-effect {
+        animation-name: fade;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+    @media (max-width: 876px) {
+  header h1 {
+    font-size: 50px;
+  }
+
+  #blinkText {
+    font-size: 20px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  #image-behind-header {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50%
+  }
+
+  /* #blinkText {
+    top: 50%;
+    transform: translateY(-50%);
+  } */
+}
+
+</style>
+<script>
+        document.addEventListener('keydown', function(event) {
+            fadeOutAndNavigate();
+        });
+
+        function fadeOutAndNavigate() {
+            document.body.style.transition = "opacity 2s";
+            document.body.style.opacity = "0";
+            setTimeout(function() {
+                window.location.href = "cutscene.html";
+            }, 2000); // Wait for the transition to complete
+
+        }
+</script>
 </html>

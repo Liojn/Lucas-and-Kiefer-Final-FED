@@ -7,7 +7,7 @@ async function signIn() {
   const email = emailInput.value;
   const password = passwordInput.value;
 
-  // Perform email format validation
+  // Check if the email is valid
   if (!isValidEmail(email)) {
     alert('Invalid email format. Please enter a valid email address.');
     return;
