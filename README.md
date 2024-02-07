@@ -17,3 +17,23 @@ User Stories:
 - As a social gamer, I want to compete with my friends and see who can defeat bosses faster, so that I can enjoy a sense of camaraderie and friendly competition.
 
 - As a teenager with a busy schedule, I want a game that offers quick and engaging gameplay sessions, so that I can enjoy gaming without feeling overwhelmed by time commitments.
+
+
+## Features 
+### Existing features
+- Feature 1: User Sign-In: Allows users to create an account and log in to access the game, providing a personalized experience.
+- Feature 2: Card Drawing Mechanism: Enables users to draw three cards upon signing in, determining their destination within the game's worlds.
+- Feature 3: World Selection: Presents users with the choice of three distinct worlds to explore, each offering unique challenges and environments.
+- Feature 4: Magical Abilities: Grants users access to a variety of magical abilities, such as melee attacks and flame jets, to aid them in their quest to defeat bosses.
+- Feature 5: Boss Battles: Challenges users to confront and defeat formidable bosses within each world, requiring strategy and skill to emerge victorious.
+  
+### Features Left to implement
+- Feature 6:  Multiplayer Mode: Introduce a multiplayer option that allows users to team up with friends or compete against each other in boss battles, enhancing the social aspect of the game.
+- Feature 7:  Customization Options: Implement customization features that allow users to personalize their characters' appearance and abilities, adding depth to the gameplay experience.
+- Feature 8:  Endless Mode: Introduce an endless mode where players can continuously face waves of enemies and bosses, testing their skills and endurance.
+- Feature 9: Community Challenges: Create community-driven challenges and events where players can collaborate or compete to earn rewards and recognition within the game.
+
+
+
+
+
