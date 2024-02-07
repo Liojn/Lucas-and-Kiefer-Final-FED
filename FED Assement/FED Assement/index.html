@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <link rel="stylesheet" link="TitleCSS.css" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="mainContainer">
+        <div class="container">
+            <img src="scroll2.png" id="image-behind-header" class="floating" alt="Image Behind Header">
+            <header id="header">
+                <h1 class="floating" id="title">Cards of Chaos</h1>
+            </header>
+        </div>
+        <p id="blinkText" class="fade-effect">Press any button to start</p>
+    </div>
+</body>
+<style>
+    .container {
+        top: 10px;
+        bottom: 100px;
+        position: relative;
+    }
+
+    body {
+        background-color: black;
+        height: 100vh;
+        width: 100wh;
+    }
+
+    .mainContainer {
+        background-image: url("TitleScreen.gif");
+        background-position: center;
+        background-size: cover;
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        background-size: 100% 110%;
+        height: 100vh;
+        margin: 0;
+    }
+
+    header {
+        margin-top: 50px;
+        top: 20%;
+        font-size: 2.3vw; /* Relative font size */
+        font-family: 'Press Start 2P', system-ui;
+        color: #CC7935;
+        text-align: center;
+        text-shadow: -1px -1px 0 #5C4033, 1px -1px 0 #5C4033, -1px 1px 0 #5C4033, 1px 1px 0 #5C4033;
+        position: relative;
+        z-index: 2;
+    }
+
+    #image-behind-header {
+        position: absolute;
+        top: 0%;
+        left: 9%;
+        transform: translate(-0%, -0%);
+        z-index: 1;
+        /* Ensure the image is behind the header */
+        width: 75%;
+    }
+
+    .floating {
+        animation-name: floating;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        margin-left: 30px;
+        margin-top: 5px;
+    }
+
+    #blinkText {
+        font-size: 30px;
+        color: white;
+        position: absolute;
+        font-family: Pixelify Sans;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    @keyframes floating {
+        0% {
+            transform: translate(0, 0px);
+        }
+
+        50% {
+            transform: translate(0, 15px);
+        }
+
+        100% {
+            transform: translate(0, -0px);
+        }
+    }
+
+    @keyframes fade {
+        0% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    .fade-effect {
+        animation-name: fade;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+    }
+
+    @media (max-width: 876px) {
+
+        #blinkText {
+            font-size: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+        }
+
+        #image-behind-header {
+            top: 20%;
+            height: 100%
+        }
+
+    }
+
+</style>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.getElementById('container');
+        const headerWidth = document.getElementById('image-behind-header').clientWidth;
+        const calculatedFontSize = headerWidth * 0.03; // Adjust this ratio as needed
+        header.style.fontSize = calculatedFontSize + 'px';
+    });
+
+    document.addEventListener('keydown', function (event) {
+        fadeOutAndNavigate();
+    });
+
+    function fadeOutAndNavigate() {
+        document.body.style.transition = "opacity 2s";
+        document.body.style.opacity = "0";
+        setTimeout(function () {
+            window.location.href = "cutscene.html";
+        }, 2000); // Wait for the transition to complete
+    }
+</script>
+</html>
