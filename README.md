@@ -65,7 +65,7 @@ User Stories:
   - All graveyard & sprites: https://itch.io/
   - All player sprites & Plant boss: https://craftpix.net/
   - Cave Environment & Cave Boss: https://itch.io/
-  - Forest environment: Unit 2D asses store
+  - Forest environment: Unity 2D asses store
   - Loop_Portal.webp: https://nuclear-throne.fandom.com/wiki/Pickups_and_Props?file=Loop_Portal.gif
   - 8-bit RPG Music Boss Battle: https://www.youtube.com/watch?v=NzFKyZc_va4
   - 8-bit RPG Music Cave Themehttps: //www.youtube.com/watch?v=YN40UybSLO4
