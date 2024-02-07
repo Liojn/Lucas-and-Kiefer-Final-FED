@@ -1,4 +1,4 @@
-![image](https://github.com/Liojn/Lucas-and-Kiefer-Final-FED/assets/149935970/f2392884-5cc5-47a3-a948-679464936fdb)# Cards of Chaos
+# Cards of Chaos
 Welcome to Cards of Chaos, an immersive gaming experience where fate is in your hands. Dive into a world of magic and mystery as you embark on a thrilling adventure across three distinct realms. Upon signing in, players draw three cards, each holding the power to transport them to one of three unique worlds: a verdant grassland teeming with life, a foreboding cave filled with ancient secrets, or a dark netherworld haunted by sinister forces.
 
 Once transported, players harness magical abilities, from unleashing fiery jets to wielding their bare fists, to conquer the realm's formidable boss and earn their ticket home. Whether battling a colossal plant guardian in the lush grass world, facing off against a formidable stone golem deep within the cavernous depths, or braving the relentless onslaught of minions in the grim netherworld, every encounter promises excitement and challenge. With Cards of Chaos, adventure awaits at every turn—do you dare to seize it?
