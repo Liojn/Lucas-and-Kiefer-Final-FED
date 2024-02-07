@@ -189,7 +189,7 @@ function Travel() {
   
   lottieAnimation.addEventListener('dotLottieLoadError', () => {
     // If there's an error loading the animation, redirect to a new HTML page
-    window.location.href = "error.html"; // Replace "error.html" with the URL of your error page
+    window.location.href = world; 
   });
 
   // Manually trigger the play method after a short delay
@@ -200,7 +200,7 @@ function Travel() {
   // Listen for the animation complete event
   lottieAnimation.addEventListener('complete', () => {
     // Redirect to the determined world
-    window.location.href = "world.html"; // Replace "world.html" with the URL of your destination page
+    window.location.href = world; // Replace "world.html" with the URL of your destination page
     fadeOverlay.remove(); // Remove the fade overlay after the animation completes
   });
 }
@@ -265,13 +265,18 @@ async function fetchLeaderboard() {
   }
 }
 
-// Function to display leaderboard in a popup modal
 function displayLeaderboard(leaderboardData) {
   const modal = document.getElementById("leaderboardModal");
   const modalContent = document.getElementById("leaderboardContent");
 
   // Clear previous content
   modalContent.innerHTML = "";
+
+  // Create a div for the "Top 10 Players!" text
+  const topText = document.createElement("div");
+  topText.textContent = "Top 10 Players!";
+  topText.classList.add("top-text");
+  modalContent.appendChild(topText);
 
   // Create leaderboard table
   const table = document.createElement("table");
@@ -290,21 +295,24 @@ function displayLeaderboard(leaderboardData) {
 
   // Create table body
   const tableBody = document.createElement("tbody");
-  leaderboardData.forEach((player, index) => {
+  // Loop through the first 10 elements of leaderboardData
+  for (let i = 0; i < Math.min(leaderboardData.length, 10); i++) {
+    const player = leaderboardData[i];
     const row = document.createElement("tr");
     row.innerHTML = `
-      <td>${index + 1}</td>
+      <td>${i + 1}</td>
       <td>${player.email}</td>
       <td>${player.bossDefeated}</td>
     `;
     tableBody.appendChild(row);
-  });
+  }
   table.appendChild(tableBody);
 
   modalContent.appendChild(table);
 
   modal.classList.add("open");
 }
+
 
 // Function to close the leaderboard popup modal
 function closeLeaderboardModal() {

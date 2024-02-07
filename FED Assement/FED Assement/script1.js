@@ -300,7 +300,7 @@ const enemy = new Enemy({
   var displayTextElement = document.getElementById('healthbar');
   var victoryElement = document.getElementById('displayText')
   const healthBar = document.getElementById("healthbar");
-  // enemy implementation
+  var tip = document.getElementById('Tips')
 
 
 
@@ -466,10 +466,12 @@ const projectiles =[new Projectile({
         doors.forEach(door=>{
           door.draw()
         })
+        tip.style.display = 'block'
         c.restore()
       }
       else if(level == 2){
         c.save()
+        tip.style.display = 'none'
         c.translate(camera.position.x, 0)
         background.draw()
         player.update()

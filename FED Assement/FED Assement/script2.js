@@ -673,12 +673,11 @@ const minions = [new Minion({
 
 
 
-
+//Declares all required id's and assign to variables
 var displayTextElement = document.getElementById('healthbar');
 var victoryElement = document.getElementById('displayText')
 const healthBar = document.getElementById("healthbar");
-// Set the health bar width to be the same as the canvas width
-
+var tip = document.getElementById('Tips')
 
 let level = 1
 //contains all data about each level including width and level collision box data
@@ -830,10 +829,12 @@ function animate(){
     })
     c.restore()
     displayTextElement.style.display = 'none';
+    tip.style.display = 'block';
   }
   else if(level == 2&&!player.dead&&!enemy.dead){
     c.save()
     background.draw()
+    tip.style.display = 'none'
     c.translate(camera.position.x, -99)
     background.draw()
     player.draw()

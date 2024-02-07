@@ -287,6 +287,7 @@ var victoryElement = document.getElementById('displayText')
 const healthBar = document.getElementById("healthbar");
 var audio = document.getElementById('my_audio')
 var audio1 = document.getElementById('audio')
+var tip = document.getElementById('Tips')
 
 
 let level = 1
@@ -414,10 +415,12 @@ function animate(){
     })
     c.restore()
     displayTextElement.style.display = 'none';//dont display healthbar
+    tip.style.display = 'block';//display tips
   }
   else if(level == 2&&!player.dead&&!enemy.dead){
     c.save()
     c.translate(camera.position.x, 0)
+    tip.style.display = 'none'//dont display tips
     background.draw()
     player.update()
     const playerAttack = player.handleInput(keys,camera)

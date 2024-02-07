@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+  </head>
+  <div id = "Tips" style="position: absolute;top: 10px; bottom: 0; left: 50%; transform: translateX(-50%); text-align: center; color: white; font-family: 'Pixelify Sans', sans-serif;">
+    <p>Press ArrowUp on the portal to travel to boss</p>
+  </div>
 <style>
     body{
         background: black;
@@ -40,10 +48,15 @@
               right: 0;
               bottom: 0;
               width: 100%;
+              font-size:20px;
+              font-family: 'Pixelify Sans', sans-serif;
+              color:white;
             "
-          ></div>
+          >
+          <div id = "Player">Player</div>
         </div>
-  
+        </div>
+
         <!-- timer -->
         <div
           id="timer"
@@ -81,8 +94,11 @@
               right: 0;
               bottom: 0;
               left: 0;
+              font-size:20px;
+              font-family: 'Pixelify Sans', sans-serif;
+              color:white;
             "
-          ></div>
+          >Boss</div>
         </div>
         <div></div>
       </div>
@@ -128,6 +144,9 @@
   to {
     opacity: 1;
   }
+}
+#Player{
+  text-align: right;
 }
 </style>
 </body>
