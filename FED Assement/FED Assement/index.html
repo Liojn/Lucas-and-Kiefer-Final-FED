@@ -7,13 +7,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class = "mainContainer">
     <div class = "container">
         <img src="scroll2.png" id="image-behind-header" class = "floating" alt="Image Behind Header">
         <header>
-            <h1 class = "floating">Cards of Chaos</h1>
+            <h1 class = "floating" id = "title">Cards of Chaos</h1>
         </header>
     </div>
     <p id = "blinkText" class = "fade-effect">Press any button to start</p>
@@ -42,9 +45,10 @@
         margin:0;
     }
     header{
-        top:17%;
-        font-size:50px;
-        font-family:Pixelify Sans;
+        margin-top:50px;
+        top:20%;
+        font-size:30px;
+        font-family:'Press Start 2P', system-ui; 
         color:  #CC7935;
         text-align: center;
         text-shadow: -1px -1px 0 #5C4033, 1px -1px 0 #5C4033, -1px 1px 0 #5C4033, 1px 1px 0 #5C4033; 
@@ -54,10 +58,10 @@
     #image-behind-header {
     position: absolute;
     top: 0%; 
-    left:13%;
+    left:9%;
     transform: translate(-0%, -0%); 
     z-index: 1; /* Ensure the image is behind the header */
-    width:900px;
+    width:75%;
     }
     .floating {  
     animation-name: floating;
@@ -76,6 +80,7 @@
         left: 50%;
         transform: translate(-50%, -50%);
     }
+    
 
  
     @keyframes floating {
@@ -98,6 +103,7 @@
     @media (max-width: 876px) {
   header h1 {
     font-size: 50px;
+
   }
 
   #blinkText {
@@ -110,15 +116,10 @@
   }
 
   #image-behind-header {
-    top: 50%;
-    transform: translateY(-50%);
-    width: 50%
+    top:20%;
+    height:100%
   }
 
-  /* #blinkText {
-    top: 50%;
-    transform: translateY(-50%);
-  } */
 }
 
 </style>

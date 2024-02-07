@@ -187,22 +187,22 @@ function Travel() {
   // Append the Lottie animation container to the fade overlay
   fadeOverlay.appendChild(lottieContainer);
   
-  lottieAnimation.addEventListener('error', () => {
+  lottieAnimation.addEventListener('dotLottieLoadError', () => {
     // If there's an error loading the animation, redirect to a new HTML page
-    window.location.href = world
+    window.location.href = "error.html"; // Replace "error.html" with the URL of your error page
   });
+
   // Manually trigger the play method after a short delay
   setTimeout(() => {
     lottieAnimation.play();
-  },100)
+  }, 100);
 
-  
   // Listen for the animation complete event
   lottieAnimation.addEventListener('complete', () => {
     // Redirect to the determined world
-    window.location.href = world 
+    window.location.href = "world.html"; // Replace "world.html" with the URL of your destination page
     fadeOverlay.remove(); // Remove the fade overlay after the animation completes
-  })
+  });
 }
 
 
