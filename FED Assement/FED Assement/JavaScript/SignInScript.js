@@ -234,3 +234,95 @@ openBtn.addEventListener("click" , () => {
 closeBtn.addEventListener("click", () =>{
   Instructions.classList.remove("open")
 })
+
+
+// Function to fetch leaderboard data from restDB
+async function fetchLeaderboard() {
+  const APIKEY = "65966cba603c3c467f8b31d4";
+  const settings_Get = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "x-apikey": APIKEY,
+      "Cache-Control": "no-cache"
+    }
+  };
+
+  try {
+    const response = await fetch("https://interactivedev-4c4e.restdb.io/rest/gamedata", settings_Get);
+    if (!response.ok) {
+      throw new Error("Error fetching leaderboard data");
+    }
+    const leaderboardData = await response.json();
+
+    // Sort leaderboard data based on number of bosses defeated in descending order
+    leaderboardData.sort((a, b) => b.bossDefeated - a.bossDefeated);
+
+    return leaderboardData;
+  } catch (error) {
+    console.error("Error fetching leaderboard data:", error);
+    return null;
+  }
+}
+
+// Function to display leaderboard in a popup modal
+function displayLeaderboard(leaderboardData) {
+  const modal = document.getElementById("leaderboardModal");
+  const modalContent = document.getElementById("leaderboardContent");
+
+  // Clear previous content
+  modalContent.innerHTML = "";
+
+  // Create leaderboard table
+  const table = document.createElement("table");
+  table.classList.add("leaderboard-table");
+
+  // Create table header
+  const tableHeader = document.createElement("thead");
+  tableHeader.innerHTML = `
+    <tr>
+      <th>Rank</th>
+      <th>Email</th>
+      <th>Bosses Defeated</th>
+    </tr>
+  `;
+  table.appendChild(tableHeader);
+
+  // Create table body
+  const tableBody = document.createElement("tbody");
+  leaderboardData.forEach((player, index) => {
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${index + 1}</td>
+      <td>${player.email}</td>
+      <td>${player.bossDefeated}</td>
+    `;
+    tableBody.appendChild(row);
+  });
+  table.appendChild(tableBody);
+
+  modalContent.appendChild(table);
+
+  modal.classList.add("open");
+}
+
+// Function to close the leaderboard popup modal
+function closeLeaderboardModal() {
+  const modal = document.getElementById("leaderboardModal");
+  modal.classList.remove("open");
+}
+
+// Add event listener to the leaderboard button
+const leaderboardBtn = document.getElementById("openLeaderboard");
+leaderboardBtn.addEventListener("click", async () => {
+  const leaderboardData = await fetchLeaderboard();
+  if (leaderboardData) {
+    displayLeaderboard(leaderboardData);
+  } else {
+    alert("Failed to fetch leaderboard data. Please try again later.");
+  }
+});
+
+// Add event listener to close the leaderboard modal
+const closeLeaderboardBtn = document.getElementById("closeLeaderboard");
+closeLeaderboardBtn.addEventListener("click", closeLeaderboardModal);

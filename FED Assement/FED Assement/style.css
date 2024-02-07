@@ -240,3 +240,15 @@ input:valid ~ label{
   }
 }
 
+#openLeaderboard{
+  position: fixed;
+  bottom: 70px; 
+  right: 20px; 
+  background-image: linear-gradient(to right, #663399, #8853bd);
+  border-radius: 20px;
+  border: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 25px;
+}
