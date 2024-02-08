@@ -340,7 +340,7 @@ class Sprite2 {
   }
 
 
-
+    //creates a new class called Minion where all logic is handled like collision detection and AI for the minion
     class Minion extends Sprite2 {
         constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
           hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -394,7 +394,7 @@ class Sprite2 {
       
       
         }
-      
+        //handles minion logic
         handleInput(keys){
           if(this.preventInput) return
           if (this.dead == false){
@@ -445,7 +445,7 @@ class Sprite2 {
         }
     }
           
-      
+        //minion taking hits logic
         takeHit() {
             this.health -= 1
             if(this.health<=0){
@@ -468,7 +468,7 @@ class Sprite2 {
           this.reverseSprite = this.animations[name].reverseSprite
           this.attackBox = this.animations[name].attackBox
         }
-      
+        //minion hitbox
         updateHitbox() {
           this.hitbox = {
             position: {
@@ -482,6 +482,7 @@ class Sprite2 {
           this.hitbox.position.x = this.position.x + this.hitbox.offset.x
           this.hitbox.position.y = this.position.y + this.hitbox.offset.y
         }
+        //minion attackBox
         updateAttackbox(){
           this.attackBox = {
             position: {
@@ -583,8 +584,8 @@ class Sprite2 {
           }
         }
   }
-
-const minions = [new Minion({
+//minion array containing minion class instances
+const minions = [new Minion({//contains all minion constructor data like imageSrc, animations and framerate
     player: player,
       imageSrc: './SkeletonWarrior/Idle.png',
       frameRate: 4,
@@ -740,18 +741,6 @@ let levels = {
         },
         imageSrc: './bossgraveyard.png',
       })
-
-      // doors = [
-      //   new Sprite({
-      //     position: {
-      //       x: 100,
-      //       y: 100,
-      //     },
-      //     imageSrc: './Portal2.png',
-      //     frameRate: 6,
-      //     loop: true,
-      //   }),
-      // ]
     },
   },
 }
