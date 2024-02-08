@@ -28,42 +28,42 @@ const player = new Player({
     width:25,
     height:70,
   },
-    imageSrc: './Fire vizard/Idle.png',
+    imageSrc: './Game Assets/Fire vizard/Idle.png',
     frameRate: 7,
     animations:{
         idleRight:{
             frameRate: 7,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/Idle.png',
+            imageSrc: './Game Assets/Fire vizard/Idle.png',
             reverseSprite: false,
         },
         idleLeft:{
             frameRate: 7,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/IdleLeft.png',
+            imageSrc: './Game Assets/Fire vizard/IdleLeft.png',
             reverseSprite:true,
         },
         runRight: {
             frameRate: 8,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/Run.png',
+            imageSrc: './Game Assets/Fire vizard/Run.png',
             reverseSprite:false,
         },
         runLeft: {  
             frameRate: 8,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/runLeft.png',
+            imageSrc: './Game Assets/Fire vizard/runLeft.png',
             reverseSprite:true,
         },
         takeHit:{
             frameRate: 3,
             frameBuffer: 8,
             loop: false,
-            imageSrc: './Fire vizard/Hurt.png',
+            imageSrc: './Game Assets/Fire vizard/Hurt.png',
             reverseSprite:false,
             onComplete: () => {
                 console.log('completed animation')
@@ -89,7 +89,7 @@ const player = new Player({
           frameRate:4,
           frameBuffer:8,
           loop:true,
-          imageSrc:'./Fire vizard/Attack_1.png',
+          imageSrc:'./Game Assets/Fire vizard/Attack_1.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -105,7 +105,7 @@ const player = new Player({
           frameRate:4,
           frameBuffer:8,
           loop:true,
-          imageSrc:'./Fire vizard/Attack_1Left.png',
+          imageSrc:'./Game Assets/Fire vizard/Attack_1Left.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -121,7 +121,7 @@ const player = new Player({
           frameRate:14,
           frameBuffer:5,
           loop:true,
-          imageSrc:'./Fire vizard/Flame_jet.png',
+          imageSrc:'./Game Assets/Fire vizard/Flame_jet.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -137,7 +137,7 @@ const player = new Player({
           frameRate:14,
           frameBuffer:5,
           loop:true,
-          imageSrc:'./Fire vizard/Flame_jetLeft.png',
+          imageSrc:'./Game Assets/Fire vizard/Flame_jetLeft.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -153,7 +153,7 @@ const player = new Player({
           frameRate:6,
           frameBuffer:6,
           loop:false,
-          imageSrc:'./Fire vizard/Dead.png',
+          imageSrc:'./Game Assets/Fire vizard/Dead.png',
           reverseSprite:false,
         }
 
@@ -211,7 +211,7 @@ class Projectile{
 const enemy = new Enemy({
     player: player,
     scale:1.75,
-      imageSrc: './bitfuul-images/image1x1.png',
+      imageSrc: './Game Assets/bitfuul-images/image1x1.png',
       frameRate: 4,
       position:{
         x:0,
@@ -231,7 +231,7 @@ const enemy = new Enemy({
               frameRate: 4,
               frameBuffer: 8,
               loop: true,
-              imageSrc: './bitfuul-images/image1x1.png',
+              imageSrc: './Game Assets/bitfuul-images/image1x1.png',
               reverseSprite: false,
           },
           Attack:{
@@ -239,7 +239,7 @@ const enemy = new Enemy({
             frameRate:7,
             frameBuffer:7,
             loop:true,
-            imageSrc:'./bitfuul-images/image1x5.png',
+            imageSrc:'./Game Assets/bitfuul-images/image1x5.png',
             reverseSprite:false,
             attackBox:{
               offset: {
@@ -255,7 +255,7 @@ const enemy = new Enemy({
             frameRate:9,
             frameBuffer:9,
             loop:false,
-            imageSrc:'./bitfuul-images/image1x3.png',
+            imageSrc:'./Game Assets/bitfuul-images/image1x3.png',
             reverseSprite:false,
             attackBox:{
               offset: {
@@ -271,7 +271,7 @@ const enemy = new Enemy({
             frameRate:9,
             frameBuffer:9,
             loop:false,
-            imageSrc:'./bitfuul-images/image1x8.png',
+            imageSrc:'./Game Assets/bitfuul-images/image1x8.png',
             reverseSprite:false,
           },
           GroundSlam:{
@@ -279,7 +279,7 @@ const enemy = new Enemy({
             frameRate:10,
             frameBuffer:9,
             loop:true,
-            imageSrc:'./bitfuul-images/image1x7.png',
+            imageSrc:'./Game Assets/bitfuul-images/image1x7.png',
             reverseSprite:false,
             attackBox:{
               offset: {
@@ -326,7 +326,7 @@ const enemy = new Enemy({
             x: 0,
             y: 0,
           },
-          imageSrc: './caveenvironment.png',
+          imageSrc: './Game Assets/Cave World/caveenvironment.png',
         })
   
   
@@ -341,7 +341,7 @@ const enemy = new Enemy({
               x: 87*16,
               y: 635,
             },
-            imageSrc: './Portal2.png',
+            imageSrc: './Images/Portal2.png',
             frameRate: 6,
             frameBuffer: 5,
             loop: true,
@@ -368,7 +368,7 @@ const enemy = new Enemy({
             x: 0,
             y: 0,
           },
-          imageSrc: './cavebossroom.png',
+          imageSrc: './Game Assets/Cave World/cavebossroom.png',
         })
   
         // doors = [
@@ -395,7 +395,7 @@ const projectiles =[new Projectile({
     x:10,
     y:0,
   },
-  ImageSrc: "./Mecha-stone Golem 0.1/weapon PNG/arm_projectile.png"
+  ImageSrc: "./Game Assets/Mecha-stone Golem 0.1/weapon PNG/arm_projectile.png"
 })]
   
   //declaring all keys used
@@ -570,7 +570,7 @@ const projectiles =[new Projectile({
                     x: 10,
                     y: 0,
                 },
-                ImageSrc: "./Mecha-stone Golem 0.1/weapon PNG/arm_projectile.png"
+                ImageSrc: "./Game Assets/Mecha-stone Golem 0.1/weapon PNG/arm_projectile.png"
             }))          
         }
         })

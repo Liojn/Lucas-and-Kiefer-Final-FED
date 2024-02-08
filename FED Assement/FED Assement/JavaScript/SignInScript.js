@@ -44,7 +44,7 @@ async function signIn() {
 // Function to sign up the user by sending data to restDB
 async function signUp(email, password) {
   const APIKEY = "65966cba603c3c467f8b31d4";
-  const settings_Post = {
+  const settings_Post = { // seting to post 
     method: "POST",
     headers: {
       "Content-Type": "application/json",

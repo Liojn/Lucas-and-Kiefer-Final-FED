@@ -158,7 +158,7 @@ const player = new Player({
 const enemy = new Enemy({
   player: player,
   scale:1.75,
-    imageSrc: './graveyardIdle.png',
+    imageSrc: './Graveyard images/graveyardIdle.png',
     frameRate: 4,
     position:{
       x:1000,
@@ -177,35 +177,35 @@ const enemy = new Enemy({
             frameRate: 4,
             frameBuffer: 12,
             loop: true,
-            imageSrc: './graveyardIdle.png',
+            imageSrc: './Graveyard images/graveyardIdle.png',
             reverseSprite: false,
         },
         idleLeft:{
             frameRate: 4,
             frameBuffer: 12,
             loop: true,
-            imageSrc: './graveyardIdle(Left).png',
+            imageSrc: './Graveyard images/graveyardIdle(Left).png',
             reverseSprite:true,
         },
         summon: {
             frameRate: 4,
             frameBuffer: 16,
             loop: true,
-            imageSrc: './graveyardSummon.png',
+            imageSrc: './Graveyard images/graveyardSummon.png',
             reverseSprite:false,
         },
         summonLeft: {  
             frameRate: 4,
             frameBuffer: 16,
             loop: true,
-            imageSrc: './graveyardSummon(Left).png',
+            imageSrc: './Graveyard images/graveyardSummon(Left).png',
             reverseSprite:true,
         },
         Attack:{
           frameRate:6,
           frameBuffer:12,
           loop:true,
-          imageSrc:'./graveyardAttack(Left).png',
+          imageSrc:'./Graveyard images/graveyardAttack(Left).png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -220,11 +220,12 @@ const enemy = new Enemy({
           frameRate:10,
           frameBuffer:5,
           loop:false,
-          imageSrc:'./graveyardDeath.png',
+          imageSrc:'./Graveyard images/graveyardDeath.png',
           reverseSprite:false,
         },
     },  
 })
+//drawing class for minion
 class Sprite2 {
     constructor({
       position,
@@ -340,7 +341,7 @@ class Sprite2 {
   }
 
 
-
+  //create new class called Minion with all its logic
     class Minion extends Sprite2 {
         constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
           hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -375,7 +376,7 @@ class Sprite2 {
            //c.fillRect(this.position.x, this.position.y, this.width, this.height)
           this.position.x += this.velocity.x
           this.updateHitbox()
-      
+          
           this.checkForHorizontalCollisions()
           this.applyGravity()
           this.updateHitbox()
@@ -583,7 +584,7 @@ class Sprite2 {
           }
         }
   }
-
+//declares new minion array
 const minions = [new Minion({
     player: player,
       imageSrc: './SkeletonWarrior/Idle.png',
@@ -696,13 +697,8 @@ let levels = {
           x: 0,
           y: 0,
         },
-        imageSrc: './graveyard.png',
+        imageSrc: './Graveyard images/graveyard.png',
       })
-
-
-  
-      // Set the background image size and position
-
 
 
       doors = [
@@ -711,7 +707,7 @@ let levels = {
             x: 150*16,
             y: 450,
           },
-          imageSrc: './Portal2.png',
+          imageSrc: './Images/Portal2.png',
           frameRate: 6,
           frameBuffer: 5,
           loop: true,
@@ -738,20 +734,8 @@ let levels = {
           x: 0,
           y: 0,
         },
-        imageSrc: './bossgraveyard.png',
+        imageSrc: './Graveyard images/bossgraveyard.png',
       })
-
-      // doors = [
-      //   new Sprite({
-      //     position: {
-      //       x: 100,
-      //       y: 100,
-      //     },
-      //     imageSrc: './Portal2.png',
-      //     frameRate: 6,
-      //     loop: true,
-      //   }),
-      // ]
     },
   },
 }
@@ -869,6 +853,7 @@ function animate(){
     enemy.update()
     if (enemyAttack.name == 'summon'){
     minions.forEach(minion =>{
+      //draws and updates minions
         minion.draw()
         minion.update()
         const minionAttack = minion.handleInput(keys)
@@ -916,6 +901,7 @@ function animate(){
                 width: enemy.health + '%',
             })
             if(enemy.health<=0){
+              //if enemy dead pause music and redirect to endCutscene page
                 enemy.dead = true
                 displayTextElement.style.display = 'none';
                 document.getElementById("my_audio").pause();
@@ -1055,6 +1041,7 @@ function animate(){
     displayTextElement.style.display = 'none';
   }
     c.save()
+    //fades level 1 to black and redirect to level 2
     c.globalAlpha = overlay.opacity
     c.fillStyle = 'Black'
     c.fillRect(0,0,canvas.width,canvas.height)

@@ -22,42 +22,42 @@ const player = new Player({
     width:25,
     height:80,
   },
-    imageSrc: './Fire vizard/Idle.png',
+    imageSrc: './Game Assets/Fire vizard/Idle.png',
     frameRate: 7,
     animations:{
         idleRight:{
             frameRate: 7,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/Idle.png',
+            imageSrc: './Game Assets/Fire vizard/Idle.png',
             reverseSprite: false,
         },
         idleLeft:{
             frameRate: 7,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/IdleLeft.png',
+            imageSrc: './Game Assets/Fire vizard/IdleLeft.png',
             reverseSprite:true,
         },
         runRight: {
             frameRate: 8,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/Run.png',
+            imageSrc: './Game Assets/Fire vizard/Run.png',
             reverseSprite:false,
         },
         runLeft: {  
             frameRate: 8,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/runLeft.png',
+            imageSrc: './Game Assets/Fire vizard/runLeft.png',
             reverseSprite:true,
         },
         takeHit:{
             frameRate: 3,
             frameBuffer: 8,
             loop: false,
-            imageSrc: './Fire vizard/Hurt.png',
+            imageSrc: './Game Assets/Fire vizard/Hurt.png',
             reverseSprite:false,
             onComplete: () => {
                 console.log('completed animation')
@@ -82,7 +82,7 @@ const player = new Player({
           frameRate:4,
           frameBuffer:8,
           loop:true,
-          imageSrc:'./Fire vizard/Attack_1.png',
+          imageSrc:'./Game Assets/Fire vizard/Attack_1.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -98,7 +98,7 @@ const player = new Player({
           frameRate:4,
           frameBuffer:8,
           loop:true,
-          imageSrc:'./Fire vizard/Attack_1Left.png',
+          imageSrc:'./Game Assets/Fire vizard/Attack_1Left.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -114,7 +114,7 @@ const player = new Player({
           frameRate:14,
           frameBuffer:5,
           loop:true,
-          imageSrc:'./Fire vizard/Flame_jet.png',
+          imageSrc:'./Game Assets/Fire vizard/Flame_jet.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -130,7 +130,7 @@ const player = new Player({
           frameRate:14,
           frameBuffer:5,
           loop:true,
-          imageSrc:'./Fire vizard/Flame_jetLeft.png',
+          imageSrc:'./Game Assets/Fire vizard/Flame_jetLeft.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -146,7 +146,7 @@ const player = new Player({
           frameRate:6,
           frameBuffer:6,
           loop:false,
-          imageSrc:'./Fire vizard/Dead.png',
+          imageSrc:'./Game Assets/Fire vizard/Dead.png',
           reverseSprite:false,
         }
 
@@ -158,7 +158,7 @@ const player = new Player({
 const enemy = new Enemy({
   player: player,
   scale:1.75,
-    imageSrc: './1/Idle.png',
+    imageSrc: './Game Assets/1/Idle.png',
     frameRate: 4,
     position:{
       x:750,
@@ -177,42 +177,42 @@ const enemy = new Enemy({
             frameRate: 4,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './1/IdleRight.png',
+            imageSrc: './Game Assets/1/IdleRight.png',
             reverseSprite: true,
         },
         idleLeft:{
             frameRate: 4,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './1/Idle.png',
+            imageSrc: './Game Assets/1/Idle.png',
             reverseSprite:false,
         },
         runRight: {
             frameRate: 6,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './1/WalkRight.png',
+            imageSrc: './Game Assets/1/WalkRight.png',
             reverseSprite:true,
         },
         runLeft: {  
             frameRate: 6,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './1/Walk.png',
+            imageSrc: './Game Assets/1/Walk.png',
             reverseSprite:false,
         },
         takeHit:{
             frameRate: 4,
             frameBuffer: 5,
             loop: false,
-            imageSrc: './1/Hurt.png',
+            imageSrc: './Game Assets/1/Hurt.png',
             reverseSprite:false,
         },
         Attack:{
           frameRate:6,
           frameBuffer:6,
           loop:true,
-          imageSrc:'./1/Attack1Right.png',
+          imageSrc:'./Game Assets/1/Attack1Right.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -227,7 +227,7 @@ const enemy = new Enemy({
           frameRate:6,
           frameBuffer:6,
           loop:true,
-          imageSrc:'./1/Attack1.png',
+          imageSrc:'./Game Assets/1/Attack1.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -242,7 +242,7 @@ const enemy = new Enemy({
           frameRate:6,
           frameBuffer:6,
           loop:true,
-          imageSrc:'./1/Attack2Right.png',
+          imageSrc:'./Game Assets/1/Attack2Right.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -257,7 +257,7 @@ const enemy = new Enemy({
           frameRate:6,
           frameBuffer:6,
           loop:true,
-          imageSrc:'./1/Attack2.png',
+          imageSrc:'./Game Assets/1/Attack2.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -272,7 +272,7 @@ const enemy = new Enemy({
           frameRate:6,
           frameBuffer:5,
           loop:false,
-          imageSrc:'./1/Death.png',
+          imageSrc:'./Game Assets/1/Death.png',
           reverseSprite:false,
         },
 
@@ -307,7 +307,7 @@ let levels = {
           x: 0,
           y: 0,
         },
-        imageSrc: './newmap(1).png',
+        imageSrc: './Game Assets/Grass World/newmap(1).png',
       })
 
 
@@ -319,7 +319,7 @@ let levels = {
             x: 82*16,
             y: 170,
           },
-          imageSrc: './Portal2.png',
+          imageSrc: './Images/Portal2.png',
           frameRate: 6,
           frameBuffer: 5,
           loop: true,
@@ -346,7 +346,7 @@ let levels = {
           x: 0,
           y: 0,
         },
-        imageSrc: './bossMap.png',
+        imageSrc: './Game Assets/Grass World/bossMap.png',
       })
     },
   },

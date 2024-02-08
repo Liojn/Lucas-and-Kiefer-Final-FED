@@ -113,7 +113,7 @@ class Sprite {
   }
   
   
-  
+  //handles player logic like collisionDetection and input keys
   class Player extends Sprite {
     constructor({ attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
       hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -543,6 +543,7 @@ class Sprite {
   
     }
   }
+  //handle enemy logic like collision detection and AI logic
   class Enemy extends Sprite1 {
     constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
       hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -612,10 +613,7 @@ class Sprite {
         this.isAttacking = true;
         return{name: "Attack",attackBox:attackBox}
        }
-      
-      
-    }
-    else {
+       else {
         if(this.lastDirection == "left"){
             this.switchSprite("idleLeft")
             return{name:"idleLeft"}
@@ -627,10 +625,12 @@ class Sprite {
     }
       
     }
-    // else(this.dead == true){
-    //   this.switchSprite('Death')
-    // }
-  
+    else(this.dead)
+    {
+      this.switchSprite('Death')
+    }
+  }
+    //enemy takes hit if player attackbox and enemy hitbox collide
     takeHit() {
         this.health -= 1
         gsap.to('#enemyHealth', {
