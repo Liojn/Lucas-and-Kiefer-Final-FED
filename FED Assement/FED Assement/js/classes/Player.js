@@ -1,3 +1,4 @@
+//class sprite used to draw all the sprites
 class Sprite {
   constructor({
     position,
@@ -39,7 +40,7 @@ class Sprite {
       }
     }
   }
-  draw() {
+  draw() {//draws image 
     if (!this.loaded) return
     const cropbox = {
       position: {
@@ -49,7 +50,7 @@ class Sprite {
       width: this.width,
       height: this.height,
     }
-    c.drawImage(
+    c.drawImage(//draws cropped image with width of this.width and this.height
       this.image,
       cropbox.position.x,
       cropbox.position.y,
@@ -67,11 +68,10 @@ class Sprite {
   play() {
     this.autoplay = true
   }
-
   updateFrames() {
     if (!this.autoplay) return
 
-    
+    //updates frames by one from right to left(for mirrored sprite sheets)
     if (this.reverseSprite){
       this.elapsedFrames++
       if (this.elapsedFrames % this.frameBuffer === 0) {
@@ -89,6 +89,7 @@ class Sprite {
         }
       }
     }
+      //updates frames by one from left to right until the last sprite image
     else if(this.reverseSprite == false){
       this.elapsedFrames++
       if (this.elapsedFrames % this.frameBuffer === 0) {
@@ -113,7 +114,7 @@ class Sprite {
 }
 
 
-
+//Player class containing all logic like collision and keys input
 class Player extends Sprite {
   constructor({ attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
     hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -139,8 +140,6 @@ class Player extends Sprite {
     this.hitbox = hitbox
     this.isAttacking = false
     this.newAttackBox
-    this.takeHitCooldown = 60; // Add a cooldown variable
-    this.takeHitCooldownDuration = 60;
     this.preventInput = false
     this.camerabox = {
       position:{
@@ -151,6 +150,8 @@ class Player extends Sprite {
       height:80,
     }
     }
+
+  //makes a camera box around the player
   updateCameraBox(){
     this.camerabox = {
       position:{
@@ -161,6 +162,7 @@ class Player extends Sprite {
       height:200,
     }
   }
+  //method to determine if you should pan camera left
   shouldPanCameraToLeft({camera}){
     const cameraBoxRightSide = this.camerabox.position.x+this.camerabox.width
     // Check if the camera box's right side is beyond the right edge of the canvas
@@ -173,6 +175,7 @@ class Player extends Sprite {
       camera.position.x -= this.velocity.x;
     }
   }
+  //method to determine if you should pan camera right
   shouldPanCameraToTheRight({camera }) {
     if (this.camerabox.position.x <= 0) return
 
@@ -183,7 +186,7 @@ class Player extends Sprite {
 
   update() {
 
-    // this is the blue box
+    // this is the blue box(the cropbox)
      //c.fillStyle = 'rgba(0, 0, 255, 0.5)'
      //c.fillRect(this.position.x, this.position.y, this.width, this.height)
     this.position.x += this.velocity.x
@@ -213,21 +216,22 @@ class Player extends Sprite {
 
 
   }
-
+  // checks player input and give corresponding logic to input
   handleInput(keys,camera){
     if(this.preventInput) return
     this.velocity.x = 0
     if (this.dead == false){
+    //if arrowright player switchsprite to run right and moves right
     if(keys.ArrowRight.pressed&&this.position.x<=background.width-this.width-3){
         this.switchSprite('runRight')
         this.velocity.x = 5
         this.lastDirection = 'right'
         this.shouldPanCameraToLeft({camera})
-        if (level != 2){
+        if (level != 2){//plays 1st audio if level is 1
           var audio = document.getElementById('my_audio1');
           audio.play()
         }
-}
+}   //if arrowleft, player moves left and switch sprite to run left
     else if(keys.ArrowLeft.pressed&&this.position.x>=3){
             this.updateHitbox()
             this.switchSprite('runLeft')
@@ -236,24 +240,28 @@ class Player extends Sprite {
             this.shouldPanCameraToTheRight({camera})
 
     }
+    //if e and direction is left, melee left
     else if(keys.e.pressed && this.lastDirection == 'left'){
       this.switchSprite('AttackLeft')
       const attackBox = this.updateAttackbox()
       this.isAttacking = true
       return {isAttacking: true, attackBox:attackBox}
     }
+    //if e and direction is right, melee right
     else if(keys.e.pressed&&this.lastDirection == 'right'){
       this.switchSprite('Attack')
       const attackBox = this.updateAttackbox()
       this.isAttacking = true
       return {isAttacking:true,attackBox:attackBox}
     }
+    // if q and direction is left, flame Jet left
     else if(keys.q.pressed&&this.lastDirection == 'left'){
       this.switchSprite('FlameJetLeft')
       const attackBox = this.updateAttackbox()
       this.isAttacking = true
       return {isAttacking: true, attackBox:attackBox}
     }
+    //if q and direction is right, flame Jet right
     else if(keys.q.pressed&&this.lastDirection == 'right'){
       this.switchSprite('FlameJet')
       const attackBox = this.updateAttackbox()
@@ -261,22 +269,26 @@ class Player extends Sprite {
       return {isAttacking: true, attackBox:attackBox}
      }
     else {
+      //if no input idle left/right
         if(this.lastDirection === 'left') this.switchSprite('idleLeft')
         else this.switchSprite("idleRight")
     }
   }
   else if(this.dead == true){
+    //if dead switch sprite to dead animation
     this.switchSprite("Death")
       }
     }
   
 takeHit() {
+  //deducts player health
   this.health -= 5
   gsap.to('#playerHealth', {
     width: player.health + '%',
   })
   if (this.health<=0) 
   { 
+    //if player dead, pause audio and go to game over screen
     document.getElementById("my_audio").pause();
     this.dead = true
     var fadeCover = document.getElementById('gameCanvas');
@@ -287,7 +299,7 @@ takeHit() {
     }, 2000); // Wait for the transition to complete
   } 
 }
-
+  //switch sprite to [name] by getting all the [name] info needed from animations array 
   switchSprite(name) {
     if (this.image === this.animations[name].image) return
     this.currentFrame = 0
@@ -299,6 +311,7 @@ takeHit() {
     this.reverseSprite = this.animations[name].reverseSprite
     this.attackBox = this.animations[name].attackBox
   }
+  //makes player hitbox
   updateHitbox() {
     this.hitbox = {
       position: {
@@ -312,6 +325,7 @@ takeHit() {
     this.hitbox.position.x = this.position.x + this.hitbox.offset.x
     this.hitbox.position.y = this.position.y + this.hitbox.offset.y
   }
+  //makes player attackBox whenever player presses q/e
   updateAttackbox(){
     this.attackBox = {
       position: {
@@ -342,6 +356,7 @@ takeHit() {
     // )
     return this.newAttackBox
   }
+  //checks for horizontal collision with collision block
   checkForHorizontalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i]
@@ -374,12 +389,12 @@ takeHit() {
       }
     }
   }
-
+  //applies gravity every frame
   applyGravity() {
     this.velocity.y += this.gravity
     this.position.y += this.velocity.y
   }
-
+  //checks for vertical collision
   checkForVerticalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i]
@@ -413,7 +428,7 @@ takeHit() {
     }
   }
 }
-
+//Enemy class logic like AI and collision detection
 class Enemy extends Sprite {
   constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
     hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -467,10 +482,11 @@ class Enemy extends Sprite {
 
 
   }
-
+  //gets distance between player and itself determining what action to do based on distance
   handleInput(keys){
     if(this.preventInput) return
     if (this.dead == false){
+      //if player is to the right and more than 100, move right
     if(player.position.x - this.position.x > 100&&this.position.x<=background.width-this.width-3){
         this.switchSprite('runRight')
         //if (player.position.x - this.position.x >= 10)
@@ -478,6 +494,7 @@ class Enemy extends Sprite {
         this.lastDirection = 'right'
 
      }
+     //ifplayer is left and distance is more than 50, move left
     else if(this.position.x - player.position.x>50 &&this.position.x>=3){
             this.updateHitbox()
             this.switchSprite('runLeft')
@@ -486,6 +503,7 @@ class Enemy extends Sprite {
             this.lastDirection = 'left'
 
      }
+     //if player left and distance less than 50, attack player left
     else if (this.position.x - player.position.x<=50&&this.lastDirection == 'left'){
       const randomAttack = Math.random();
       if (randomAttack <0.5&&this.takeHitCooldown<=0){
@@ -495,13 +513,8 @@ class Enemy extends Sprite {
         this.takeHitCooldown = this.takeHitCooldownDuration
         return {isAttacking: true, attackBox:attackBox}
       }
-      // else{
-      //   this.switchSprite('FlameJetLeft')
-      //   const attackBox = this.updateAttackbox()
-      //   this.isAttacking = true
-      //   return {isAttacking: true, attackBox:attackBox}
-      // }
     }
+    //if player right and distance less than 100, attack player right
     else if(player.position.x - this.position.x<=100&&this.lastDirection == 'right'){
       const randomAttack = Math.random();
       if (randomAttack< 0.5&&this.takeHitCooldown<=0){
@@ -511,31 +524,29 @@ class Enemy extends Sprite {
         this.takeHitCooldown = this.takeHitCooldownDuration
         return {isAttacking: true, attackBox:attackBox}
       }
-      // else{
-      //   this.switchSprite('FlameJet')
-      //   const attackBox = this.updateAttackbox()
-      //   this.isAttacking = true
-      //   return {isAttacking: true, attackBox:attackBox}
-      // }
     }
     
     
     else{
+      //idle if nothing happens(should not run)
         if(this.lastDirection === 'left') this.switchSprite('idleLeft')
         else this.switchSprite("idleRight")
     }
   }
   else if (this.dead == true){
+    //switch to death sprite if dead
     this.switchSprite('Death')
   }
 }
+
   takeHit() {
+    //reduces enemy health if hit
       this.health -= 1
       gsap.to('#enemyHealth', {
         width: enemy.health + '%',
       })
       if (this.health <= 0) 
-      { 
+      { //if enemy dead, audio paused and move to the ending cutscene page
         this.dead = true
         var fadeCover = document.getElementById('gameCanvas');
         fadeCover.style.transition = "opacity 2s";
@@ -546,7 +557,7 @@ class Enemy extends Sprite {
       } 
       } 
   
-
+  //switch sprite to [name] by getting all the [name] info needed from animations array 
   switchSprite(name) {
     if (this.image === this.animations[name].image) return
     if (this.dead){
@@ -561,7 +572,7 @@ class Enemy extends Sprite {
     this.reverseSprite = this.animations[name].reverseSprite
     this.attackBox = this.animations[name].attackBox
   }
-
+  //enemy hitbox
   updateHitbox() {
     this.hitbox = {
       position: {
@@ -575,6 +586,7 @@ class Enemy extends Sprite {
     this.hitbox.position.x = this.position.x + this.hitbox.offset.x
     this.hitbox.position.y = this.position.y + this.hitbox.offset.y
   }
+  //enemy attackBox
   updateAttackbox(){
     this.attackBox = {
       position: {
@@ -604,6 +616,7 @@ class Enemy extends Sprite {
     // )
     return this.newAttackBox
   }
+  //enemy horizontal collision detection logic
   checkForHorizontalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i]
@@ -636,12 +649,12 @@ class Enemy extends Sprite {
       }
     }
   }
-
+  //gravity applied every frame
   applyGravity() {
     this.velocity.y += this.gravity
     this.position.y += this.velocity.y
   }
-
+  //enemy vertical collision detection logic
   checkForVerticalCollisions() {
     for (let i = 0; i < this.collisionBlocks.length; i++) {
       const collisionBlock = this.collisionBlocks[i]
