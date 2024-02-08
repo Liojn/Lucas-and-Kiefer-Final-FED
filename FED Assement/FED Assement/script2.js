@@ -915,12 +915,8 @@ function animate(){
             gsap.to('#enemyHealth', {
                 width: enemy.health + '%',
             })
-<<<<<<< HEAD
             if(enemy.health<=0){
               //if enemy dead pause music and redirect to endCutscene page
-=======
-            if(enemy.health<=0){//if enemy dead pause music and redirect to end cutscene
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
                 enemy.dead = true
                 displayTextElement.style.display = 'none';
                 document.getElementById("my_audio").pause();
