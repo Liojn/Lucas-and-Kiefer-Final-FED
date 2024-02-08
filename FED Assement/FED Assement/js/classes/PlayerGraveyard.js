@@ -115,7 +115,7 @@ class Sprite {
   }
   
   
-  //handles player logic like collisionDetection and input keys
+  //Player class containing all logic like collision and keys input
   class Player extends Sprite {
     constructor({ attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
       hitbox = { offset: {}, width: undefined, height: undefined }}) {

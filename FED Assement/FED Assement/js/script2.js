@@ -586,7 +586,6 @@ class Sprite2 {
           }
         }
   }
-
 //minion array containing minion class instances
 const minions = [new Minion({//contains all minion constructor data like imageSrc, animations and framerate
     player: player,
