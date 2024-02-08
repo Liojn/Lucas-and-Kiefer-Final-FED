@@ -115,11 +115,7 @@ class Sprite {
   }
   
   
-<<<<<<< HEAD:FED Assement/FED Assement/js/classes/PlayerGraveyard.js
-  //handles player logic like collisionDetection and input keys
-=======
   //Player class containing all logic like collision and keys input
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96:FED Assement/FED Assement/PlayerGraveyard.js
   class Player extends Sprite {
     constructor({ attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
       hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -561,11 +557,7 @@ class Sprite {
   
     }
   }
-<<<<<<< HEAD:FED Assement/FED Assement/js/classes/PlayerGraveyard.js
-  //handle enemy logic like collision detection and AI logic
-=======
   //Enemy class logic like collisiondetection and AI
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96:FED Assement/FED Assement/PlayerGraveyard.js
   class Enemy extends Sprite1 {
     constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
       hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -650,19 +642,12 @@ class Sprite {
     }
       
     }
-<<<<<<< HEAD:FED Assement/FED Assement/js/classes/PlayerGraveyard.js
     else(this.dead)
     {
       this.switchSprite('Death')
     }
   }
     //enemy takes hit if player attackbox and enemy hitbox collide
-=======
-    // else(this.dead == true){
-    //   this.switchSprite('Death')
-    // }
-    
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96:FED Assement/FED Assement/PlayerGraveyard.js
     takeHit() {
       //enemy health reduce if hit
         this.health -= 1
