@@ -68,7 +68,8 @@ User Stories:
   - Forest environment: Unity 2D asses store
   - Loop_Portal.webp: https://nuclear-throne.fandom.com/wiki/Pickups_and_Props?file=Loop_Portal.gif
   - 8-bit RPG Music Boss Battle: https://www.youtube.com/watch?v=NzFKyZc_va4
-  - 8-bit RPG Music Cave Themehttps: //www.youtube.com/watch?v=YN40UybSLO4
+  - 8-bit RPG Music Cave Theme: https: //www.youtube.com/watch?v=YN40UybSLO4
+  - 8-Bit Graveyard: https://www.youtube.com/watch?v=bqkEnsr1gWs
   - xDeviruchi - And The Journey Begins & xDeviruchi - Decisive Battle: https://xdeviruchi.itch.io/8-bit-fantasy-adventure-music-pack
   - TitleScreen.gif: https://kryssalian.artstation.com/projects/nEq3K9
   - wizardEndCutscene.png & wizardCustscene.jpg: https://creator.nightcafe.studio/
