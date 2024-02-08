@@ -1,4 +1,4 @@
-
+//event listeners 
 window.addEventListener('keydown',(event)=>{
 
     if (player.preventInput) return
@@ -25,18 +25,18 @@ window.addEventListener('keydown',(event)=>{
             if(player.velocity.y === 0)
                 player.velocity.y = -15;
             break
-        case 'ArrowLeft':
+        case 'ArrowLeft'://prevents you from scrolling left
             event.preventDefault();
             keys.ArrowLeft.pressed = true
             break
-        case 'ArrowRight':
+        case 'ArrowRight'://prevents you from scrolling right
             event.preventDefault();
             keys.ArrowRight.pressed = true
             break
-        case 'ArrowDown':
+        case 'ArrowDown'://prevents you from scrolling down using arrow down
             event.preventDefault();
             break
-        case ' ':
+        case ' '://prevents you from scrolling down using spacebar
             event.preventDefault();
             break
         case 'e':

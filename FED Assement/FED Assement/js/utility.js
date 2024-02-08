@@ -1,3 +1,4 @@
+//All these parse2D gets info from collision data and push info to a rows array
 Array.prototype.parse2D = function () {
     const rows = []
     for (let i = 0; i < this.length; i += 90) {
@@ -39,6 +40,8 @@ Array.prototype.parse2D4 = function () {
 
   return rows
 }
+
+//creates a new collision block object by reading the data and collision block positions
 Array.prototype.createObjectsFrom2D4 = function(){
   const objects = []
   this.forEach((row, y) => {
@@ -58,6 +61,8 @@ Array.prototype.createObjectsFrom2D4 = function(){
   })
   return objects
 }
+//creates a new collision block object by reading the data and collision block positions
+
 Array.prototype.createObjectsFrom2D1 = function(){
   const objects = []
   this.forEach((row, y) => {
@@ -77,6 +82,7 @@ Array.prototype.createObjectsFrom2D1 = function(){
   })
   return objects
 }
+//creates a new collision block object by reading the data and collision block positions
 
 Array.prototype.createObjectsFrom2D = function(){
     const objects = []
@@ -97,6 +103,7 @@ Array.prototype.createObjectsFrom2D = function(){
     })
     return objects
 }
+//creates a new collision block object by reading the data and collision block positions
 
 Array.prototype.createObjectsFrom2D2 = function(){
   const objects = []
@@ -117,6 +124,7 @@ Array.prototype.createObjectsFrom2D2 = function(){
   })
   return objects
 }
+//creates a new collision block object by reading the data and collision block positions
 
 Array.prototype.createObjectsFrom2D3 = function(){
   const objects = []
