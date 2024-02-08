@@ -455,6 +455,7 @@ function animate(){
     enemy.draw()
     enemy.update()
     displayTextElement.style.display = 'block';
+    //sets healthbar width based on window width
     if (window.innerWidth>background.image.width){
       healthBar.style.width = `${background.width}px`;
     }

@@ -225,7 +225,11 @@ const enemy = new Enemy({
         },
     },  
 })
+<<<<<<< HEAD
 //drawing class for minion
+=======
+//new class sprite2 for minion class
+>>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
 class Sprite2 {
     constructor({
       position,
@@ -267,7 +271,7 @@ class Sprite2 {
         }
       }
     }
-    draw() {
+    draw() { //draws minion sprite image
       if (!this.loaded) return
       const cropbox = {
         position: {
@@ -299,7 +303,7 @@ class Sprite2 {
     updateFrames() {
       if (!this.autoplay) return
   
-      
+      //updates frames by one from right to left(for mirrored sprite sheets)
       if (this.reverseSprite){
         this.elapsedFrames++
         if (this.elapsedFrames % this.frameBuffer === 0) {
@@ -317,6 +321,7 @@ class Sprite2 {
           }
         }
       }
+      //updates frames by one from left to right until the last sprite image
       else if(this.reverseSprite == false){
         this.elapsedFrames++
         if (this.elapsedFrames % this.frameBuffer === 0) {
@@ -341,7 +346,11 @@ class Sprite2 {
   }
 
 
+<<<<<<< HEAD
   //create new class called Minion with all its logic
+=======
+    //creates a new class called Minion where all logic is handled like collision detection and AI for the minion
+>>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
     class Minion extends Sprite2 {
         constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
           hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -395,13 +404,12 @@ class Sprite2 {
       
       
         }
-      
+        //handles minion logic based on player distance
         handleInput(keys){
           if(this.preventInput) return
           if (this.dead == false){
           if(player.position.x - this.position.x > 40&&this.position.x<=background.width-this.width-3){
               this.switchSprite("runRight")
-              //if (player.position.x - this.position.x >= 10)
               this.position.x += 1.5
               this.lastDirection = 'right'
               return {isAttacking: false}
@@ -410,7 +418,6 @@ class Sprite2 {
           else if(this.position.x - player.position.x>40 &&this.position.x>=3){
                   this.updateHitbox()
                   this.switchSprite('runLeft')
-                  //if (enemy.position.x - this.position.x >= 10) 
                   this.position.x -= 1.5
                   if(this.position.x < 250){
                     this.position.x = 250
@@ -436,6 +443,7 @@ class Sprite2 {
           
           
         else{
+          //idle animation if nothing else
             if(this.lastDirection === 'left') this.switchSprite('idleLeft')
             else this.switchSprite("idleRight")
         }
@@ -443,10 +451,11 @@ class Sprite2 {
         }
         else if(this.dead == true){
           this.switchSprite('Death')
+          //switch to dead sprite if minion dead
         }
     }
           
-      
+        //minion taking hits logic
         takeHit() {
             this.health -= 1
             if(this.health<=0){
@@ -469,7 +478,7 @@ class Sprite2 {
           this.reverseSprite = this.animations[name].reverseSprite
           this.attackBox = this.animations[name].attackBox
         }
-      
+        //makes minion hitbox
         updateHitbox() {
           this.hitbox = {
             position: {
@@ -483,6 +492,7 @@ class Sprite2 {
           this.hitbox.position.x = this.position.x + this.hitbox.offset.x
           this.hitbox.position.y = this.position.y + this.hitbox.offset.y
         }
+        //makes minion attackBox if minion attacks
         updateAttackbox(){
           this.attackBox = {
             position: {
@@ -584,8 +594,13 @@ class Sprite2 {
           }
         }
   }
+<<<<<<< HEAD
 //declares new minion array
 const minions = [new Minion({
+=======
+//minion array containing minion class instances
+const minions = [new Minion({//contains all minion constructor data like imageSrc, animations and framerate
+>>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
     player: player,
       imageSrc: './SkeletonWarrior/Idle.png',
       frameRate: 4,
@@ -700,7 +715,6 @@ let levels = {
         imageSrc: './Graveyard images/graveyard.png',
       })
 
-
       doors = [
         new Sprite({
           position: {
@@ -800,7 +814,7 @@ function animate(){
 
     if (level == 1){
     c.save()
-    c.translate(camera.position.x, -99)
+    c.translate(camera.position.x, -99)//updates canvas based on camera position
     background.draw()
     player.update()
     const playerAttack = player.handleInput(keys,camera)
@@ -808,18 +822,18 @@ function animate(){
     if (player.isAttacking) {
         player.isAttacking = false
       }
-    doors.forEach(door=>{
+    doors.forEach(door=>{//draws doors
       door.draw()
     })
     c.restore()
-    displayTextElement.style.display = 'none';
-    tip.style.display = 'block';
+    displayTextElement.style.display = 'none';//healthbar is hidden at level 1
+    tip.style.display = 'block';//tips is shown at level 1
   }
   else if(level == 2&&!player.dead&&!enemy.dead){
     c.save()
     background.draw()
-    tip.style.display = 'none'
-    c.translate(camera.position.x, -99)
+    tip.style.display = 'none'//tips is hidden at level 2
+    c.translate(camera.position.x, -99)//updates canvas based on camera position
     background.draw()
     player.draw()
     player.update()
@@ -851,6 +865,7 @@ function animate(){
     const enemyAttack =enemy.handleInput(keys)
     enemy.draw()
     enemy.update()
+    //if enemy does summon animation
     if (enemyAttack.name == 'summon'){
     minions.forEach(minion =>{
       //draws and updates minions
@@ -859,7 +874,7 @@ function animate(){
         const minionAttack = minion.handleInput(keys)
         const playerAttack = player.handleInput(keys,camera)
         minion.collisionBlocks = collisionBlocks
-        //if enemy misses not counted as attack
+        //if minion misses not counted as attack
         if (minion.isAttacking&&
             !rectangularCollision({
                 rectangle1: minionAttack,
@@ -867,7 +882,7 @@ function animate(){
             })) {
             minion.isAttacking = false
         }
-        //if enemy hits counted as attack and player health reduced
+        //if minion hits counted as attack and player health reduced
         if (minion.isAttacking&&
             rectangularCollision({
                 rectangle1: minionAttack,
@@ -895,13 +910,17 @@ function animate(){
             minion.takeHit();
             player.isAttacking = false;            
         }
-        if(minion.dead){
+        if(minion.dead){//if minion dead reduce enemy health
             enemy.health -= 10
             gsap.to('#enemyHealth', {
                 width: enemy.health + '%',
             })
+<<<<<<< HEAD
             if(enemy.health<=0){
               //if enemy dead pause music and redirect to endCutscene page
+=======
+            if(enemy.health<=0){//if enemy dead pause music and redirect to end cutscene
+>>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
                 enemy.dead = true
                 displayTextElement.style.display = 'none';
                 document.getElementById("my_audio").pause();
@@ -912,15 +931,15 @@ function animate(){
                     window.location.href = "endCutscene.html";
                 }, 2000);
             }
-            const randomNum = Math.random();
+            const randomNum = Math.random();//randomises where minion will spawn relative to player
             if (randomNum < 0.5){
                 offset = 70
             }
             else{
                 offset = -70
             }
-            minions.splice(minions.indexOf(minion), 1);
-            minions.push(new Minion({
+            minions.splice(minions.indexOf(minion), 1);//remove existing minion from array
+            minions.push(new Minion({//add new minion with required constructors like framerate and imageSrc
                 player: player,
                   imageSrc: './SkeletonWarrior/Idle.png',
                   frameRate: 4,
@@ -1008,6 +1027,7 @@ function animate(){
 
     })  
     }
+    //makes healthbar responsive to window size
     displayTextElement.style.display = 'block';
     if (window.innerWidth>canvas.width){
       healthBar.style.width = `${canvas.width}px`;
@@ -1038,6 +1058,7 @@ function animate(){
     c.restore()
   }
   else{
+    //makes healthbar hidden
     displayTextElement.style.display = 'none';
   }
     c.save()

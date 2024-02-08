@@ -1,3 +1,4 @@
+//intialises collision block
 class CollisionBlock {
     constructor({ position }) {
       this.position = position
