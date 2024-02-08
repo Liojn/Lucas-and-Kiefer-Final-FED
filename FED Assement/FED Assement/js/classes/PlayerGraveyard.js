@@ -557,7 +557,7 @@ class Sprite {
   
     }
   }
-  //Enemy class logic like collisiondetection and AI
+  //handle enemy logic like collision detection and AI logic
   class Enemy extends Sprite1 {
     constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
       hitbox = { offset: {}, width: undefined, height: undefined }}) {
