@@ -1,19 +1,13 @@
 let canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
 
-// canvas.width = 90*16
-// canvas.height = 320
 
 let parseCollisions 
 let collisionBlocks 
 
 let background
 let doors 
-//Separate canvas for projectils
 const projectileCanvas = document.createElement('canvas');
-const pc = projectileCanvas.getContext('2d');
-projectileCanvas.width = canvas.width;
-projectileCanvas.height = canvas.height;
 //declares player values like animations, image, position and hitbox
 const player = new Player({
   position: {
@@ -159,7 +153,7 @@ const player = new Player({
 
     },  
 })
-
+//creates class for projectiles and its constructors with objects like attackBox, velocity and ImageSrc
 class Projectile{
   constructor({position, velocity, ImageSrc}){
     this.position = position
@@ -191,7 +185,7 @@ class Projectile{
     //     this.attackBox.height
     // );
   }
-  update(){
+  update(){//updates player position by applying velocity to it 
     this.draw()
     this.position.x+=this.velocity.x
     this.position.y+= this.velocity.y
@@ -207,7 +201,7 @@ class Projectile{
 
 
 
-
+//declares enemy values like animations, image, position and hitbox
 const enemy = new Enemy({
     player: player,
     scale:1.75,
@@ -296,7 +290,7 @@ const enemy = new Enemy({
   })
   
   
-  
+  //assigns html things like healthbars to a javascipt variable
   var displayTextElement = document.getElementById('healthbar');
   var victoryElement = document.getElementById('displayText')
   const healthBar = document.getElementById("healthbar");
@@ -328,12 +322,6 @@ const enemy = new Enemy({
           },
           imageSrc: './caveenvironment.png',
         })
-  
-  
-    
-        // Set the background image size and position
-  
-  
   
         doors = [
           new Sprite({
@@ -370,22 +358,11 @@ const enemy = new Enemy({
           },
           imageSrc: './cavebossroom.png',
         })
-  
-        // doors = [
-        //   new Sprite({
-        //     position: {
-        //       x: 100,
-        //       y: 100,
-        //     },
-        //     imageSrc: './Portal2.png',
-        //     frameRate: 6,
-        //     loop: true,
-        //   }),
-        // ]
       },
     },
   }
-  levels[level].init()    
+  levels[level].init()  
+//creates  a projectile array containing projectile objects
 const projectiles =[new Projectile({
   position:{
     x:0,
@@ -416,7 +393,6 @@ const projectiles =[new Projectile({
         pressed:false
       }
   }
-  const halfPageThreshold = canvas.width / 2;
   //function to detect collision between attackbox and hitbox, return true if collision detected
   function rectangularCollision({ rectangle1,rectangle2 }) {
     return (
@@ -439,10 +415,11 @@ const projectiles =[new Projectile({
       document.querySelector('#displayText').innerHTML = 'Boss Wins'
     }
   }
-  
+  //overlay is transparent
   const overlay = {
       opacity:0,
   }
+  //declares camera constant
   const camera = {
     position:{
       x:0,
@@ -455,7 +432,7 @@ const projectiles =[new Projectile({
       c.fillRect(0, 0, canvas.width, canvas.height)
       if (level == 1){
         c.save()
-        c.translate(camera.position.x, -200)
+        c.translate(camera.position.x, -200)//updates canvas based on camera position
         background.draw()
         player.update()
         const playerAttack = player.handleInput(keys,camera)
@@ -472,7 +449,7 @@ const projectiles =[new Projectile({
       else if(level == 2){
         c.save()
         tip.style.display = 'none'
-        c.translate(camera.position.x, 0)
+        c.translate(camera.position.x, 0)//updates canvas based on camera position
         background.draw()
         player.update()
         const playerAttack = player.handleInput(keys,camera)
@@ -540,9 +517,11 @@ const projectiles =[new Projectile({
           }
           enemy.isAttacking = false
         }
+        //if enemy is shooting projectile
         if (enemyAttack.name == 'Laser'){
         projectiles.forEach(projectile =>{
-          projectile.update()
+          projectile.update()//updates projectile to give it speed
+          //checks for collision between projectile and player
           if (
             rectangularCollision({
                 rectangle1: projectile,
