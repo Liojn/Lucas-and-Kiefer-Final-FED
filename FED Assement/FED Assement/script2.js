@@ -22,42 +22,42 @@ const player = new Player({
     width:25,
     height:80,
   },
-    imageSrc: './Fire vizard/Idle.png',
+    imageSrc: './Game Assets/Fire vizard/Idle.png',
     frameRate: 7,
     animations:{
         idleRight:{
             frameRate: 7,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/Idle.png',
+            imageSrc: './Game Assets/Fire vizard/Idle.png',
             reverseSprite: false,
         },
         idleLeft:{
             frameRate: 7,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/IdleLeft.png',
+            imageSrc: './Game Assets/Fire vizard/IdleLeft.png',
             reverseSprite:true,
         },
         runRight: {
             frameRate: 8,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/Run.png',
+            imageSrc: './Game Assets/Fire vizard/Run.png',
             reverseSprite:false,
         },
         runLeft: {  
             frameRate: 8,
             frameBuffer: 8,
             loop: true,
-            imageSrc: './Fire vizard/runLeft.png',
+            imageSrc: './Game Assets/Fire vizard/runLeft.png',
             reverseSprite:true,
         },
         takeHit:{
             frameRate: 3,
             frameBuffer: 8,
             loop: false,
-            imageSrc: './Fire vizard/Hurt.png',
+            imageSrc: './Game Assets/Fire vizard/Hurt.png',
             reverseSprite:false,
             onComplete: () => {
                 console.log('completed animation')
@@ -82,7 +82,7 @@ const player = new Player({
           frameRate:4,
           frameBuffer:8,
           loop:true,
-          imageSrc:'./Fire vizard/Attack_1.png',
+          imageSrc:'./Game Assets/Fire vizard/Attack_1.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -98,7 +98,7 @@ const player = new Player({
           frameRate:4,
           frameBuffer:8,
           loop:true,
-          imageSrc:'./Fire vizard/Attack_1Left.png',
+          imageSrc:'./Game Assets/Fire vizard/Attack_1Left.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -114,7 +114,7 @@ const player = new Player({
           frameRate:14,
           frameBuffer:5,
           loop:true,
-          imageSrc:'./Fire vizard/Flame_jet.png',
+          imageSrc:'./Game Assets/Fire vizard/Flame_jet.png',
           reverseSprite:false,
           attackBox:{
             offset: {
@@ -130,7 +130,7 @@ const player = new Player({
           frameRate:14,
           frameBuffer:5,
           loop:true,
-          imageSrc:'./Fire vizard/Flame_jetLeft.png',
+          imageSrc:'./Game Assets/Fire vizard/Flame_jetLeft.png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -146,7 +146,7 @@ const player = new Player({
           frameRate:6,
           frameBuffer:6,
           loop:false,
-          imageSrc:'./Fire vizard/Dead.png',
+          imageSrc:'./Game Assets/Fire vizard/Dead.png',
           reverseSprite:false,
         }
 
@@ -158,7 +158,7 @@ const player = new Player({
 const enemy = new Enemy({
   player: player,
   scale:1.75,
-    imageSrc: './Graveyard images/graveyardIdle.png',
+    imageSrc: './Game Assets/Graveyard images/graveyardIdle.png',
     frameRate: 4,
     position:{
       x:1000,
@@ -177,35 +177,35 @@ const enemy = new Enemy({
             frameRate: 4,
             frameBuffer: 12,
             loop: true,
-            imageSrc: './Graveyard images/graveyardIdle.png',
+            imageSrc: './Game Assets/Graveyard images/graveyardIdle.png',
             reverseSprite: false,
         },
         idleLeft:{
             frameRate: 4,
             frameBuffer: 12,
             loop: true,
-            imageSrc: './Graveyard images/graveyardIdle(Left).png',
+            imageSrc: './Game Assets/Graveyard images/graveyardIdle(Left).png',
             reverseSprite:true,
         },
         summon: {
             frameRate: 4,
             frameBuffer: 16,
             loop: true,
-            imageSrc: './Graveyard images/graveyardSummon.png',
+            imageSrc: './Game Assets/Graveyard images/graveyardSummon.png',
             reverseSprite:false,
         },
         summonLeft: {  
             frameRate: 4,
             frameBuffer: 16,
             loop: true,
-            imageSrc: './Graveyard images/graveyardSummon(Left).png',
+            imageSrc: './Game Assets/Graveyard images/graveyardSummon(Left).png',
             reverseSprite:true,
         },
         Attack:{
           frameRate:6,
           frameBuffer:12,
           loop:true,
-          imageSrc:'./Graveyard images/graveyardAttack(Left).png',
+          imageSrc:'./Game Assets/Graveyard images/graveyardAttack(Left).png',
           reverseSprite:true,
           attackBox:{
             offset: {
@@ -220,16 +220,12 @@ const enemy = new Enemy({
           frameRate:10,
           frameBuffer:5,
           loop:false,
-          imageSrc:'./Graveyard images/graveyardDeath.png',
+          imageSrc:'./Game Assets/Graveyard images/graveyardDeath.png',
           reverseSprite:false,
         },
     },  
 })
-<<<<<<< HEAD
-//drawing class for minion
-=======
 //new class sprite2 for minion class
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
 class Sprite2 {
     constructor({
       position,
@@ -346,11 +342,7 @@ class Sprite2 {
   }
 
 
-<<<<<<< HEAD
-  //create new class called Minion with all its logic
-=======
     //creates a new class called Minion where all logic is handled like collision detection and AI for the minion
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
     class Minion extends Sprite2 {
         constructor({ player,attack,scale,position,collisionBlocks = [], imageSrc, frameRate, animations, loop ,reverseSprite,attackBox = { offset: {}, width: undefined, height: undefined }, postion = {x:undefined,y:undefined},
           hitbox = { offset: {}, width: undefined, height: undefined }}) {
@@ -594,15 +586,11 @@ class Sprite2 {
           }
         }
   }
-<<<<<<< HEAD
-//declares new minion array
-const minions = [new Minion({
-=======
+
 //minion array containing minion class instances
 const minions = [new Minion({//contains all minion constructor data like imageSrc, animations and framerate
->>>>>>> 94fa922819814188f96cb26ab4807ad152b21d96
     player: player,
-      imageSrc: './SkeletonWarrior/Idle.png',
+      imageSrc: './Game Assets/SkeletonWarrior/Idle.png',
       frameRate: 4,
       position:{
         x:550,
@@ -621,35 +609,35 @@ const minions = [new Minion({//contains all minion constructor data like imageSr
               frameRate: 7,
               frameBuffer: 7,
               loop: true,
-              imageSrc: './SkeletonWarrior/Idle.png',
+              imageSrc: './Game Assets/SkeletonWarrior/Idle.png',
               reverseSprite: false,
           },
           idleLeft:{
               frameRate: 7,
               frameBuffer: 7,
               loop: true,
-              imageSrc: './SkeletonWarrior/Idle.png',
+              imageSrc: './Game Assets/SkeletonWarrior/Idle.png',
               reverseSprite:true,
           },
           runRight: {
               frameRate: 7,
               frameBuffer:7,
               loop: true,
-              imageSrc: './SkeletonWarrior/Walk.png',
+              imageSrc: './Game Assets/SkeletonWarrior/Walk.png',
               reverseSprite:false,
           },
           runLeft: {  
               frameRate: 7,
               frameBuffer: 14,
               loop: true,
-              imageSrc: './SkeletonWarrior/Walk(Left).png',
+              imageSrc: './Game Assets/SkeletonWarrior/Walk(Left).png',
               reverseSprite:true,
           },
           Attack:{
             frameRate:4,
             frameBuffer:12,
             loop:true,
-            imageSrc:'./SkeletonWarrior/Attack_3.png',
+            imageSrc:'./Game Assets/SkeletonWarrior/Attack_3.png',
             reverseSprite:true,
             attackBox:{
               offset: {
@@ -664,7 +652,7 @@ const minions = [new Minion({//contains all minion constructor data like imageSr
             frameRate:5,
             frameBuffer:15,
             loop:true,
-            imageSrc:'./SkeletonWarrior/Attack_1Left.png',
+            imageSrc:'./Game Assets/SkeletonWarrior/Attack_1Left.png',
             reverseSprite:true,
             attackBox:{
               offset: {
@@ -679,7 +667,7 @@ const minions = [new Minion({//contains all minion constructor data like imageSr
             frameRate:4,
             frameBuffer:12,
             loop:false,
-            imageSrc:'./SkeletonWarrior/Dead.png',
+            imageSrc:'./Game Assets/SkeletonWarrior/Dead.png',
             reverseSprite:false,
           },
       },  
@@ -712,7 +700,7 @@ let levels = {
           x: 0,
           y: 0,
         },
-        imageSrc: './Graveyard images/graveyard.png',
+        imageSrc: './Game Assets/Graveyard images/graveyard.png',
       })
 
       doors = [
@@ -748,7 +736,7 @@ let levels = {
           x: 0,
           y: 0,
         },
-        imageSrc: './Graveyard images/bossgraveyard.png',
+        imageSrc: './Game Assets/Graveyard images/bossgraveyard.png',
       })
     },
   },
@@ -937,7 +925,7 @@ function animate(){
             minions.splice(minions.indexOf(minion), 1);//remove existing minion from array
             minions.push(new Minion({//add new minion with required constructors like framerate and imageSrc
                 player: player,
-                  imageSrc: './SkeletonWarrior/Idle.png',
+                  imageSrc: './Game Assets/SkeletonWarrior/Idle.png',
                   frameRate: 4,
                   position:{
                     x:player.position.x+offset,
@@ -956,35 +944,35 @@ function animate(){
                           frameRate: 7,
                           frameBuffer: 7,
                           loop: true,
-                          imageSrc: './SkeletonWarrior/Idle.png',
+                          imageSrc: './Game Assets/SkeletonWarrior/Idle.png',
                           reverseSprite: false,
                       },
                       idleLeft:{
                           frameRate: 7,
                           frameBuffer: 7,
                           loop: true,
-                          imageSrc: './SkeletonWarrior/Idle.png',
+                          imageSrc: './Game Assets/SkeletonWarrior/Idle.png',
                           reverseSprite:true,
                       },
                       runRight: {
                           frameRate: 7,
                           frameBuffer:7,
                           loop: true,
-                          imageSrc: './SkeletonWarrior/Walk.png',
+                          imageSrc: './Game Assets/SkeletonWarrior/Walk.png',
                           reverseSprite:false,
                       },
                       runLeft: {  
                           frameRate: 7,
                           frameBuffer: 14,
                           loop: true,
-                          imageSrc: './SkeletonWarrior/Walk(Left).png',
+                          imageSrc: './Game Assets/SkeletonWarrior/Walk(Left).png',
                           reverseSprite:true,
                       },
                       Attack:{
                         frameRate:4,
                         frameBuffer:12,
                         loop:true,
-                        imageSrc:'./SkeletonWarrior/Attack_3.png',
+                        imageSrc:'./Game Assets/SkeletonWarrior/Attack_3.png',
                         reverseSprite:true,
                         attackBox:{
                           offset: {
@@ -999,7 +987,7 @@ function animate(){
                         frameRate:5,
                         frameBuffer:15,
                         loop:true,
-                        imageSrc:'./SkeletonWarrior/Attack_1Left.png',
+                        imageSrc:'./Game Assets/SkeletonWarrior/Attack_1Left.png',
                         reverseSprite:true,
                         attackBox:{
                           offset: {
@@ -1014,7 +1002,7 @@ function animate(){
                         frameRate:4,
                         frameBuffer:12,
                         loop:false,
-                        imageSrc:'./SkeletonWarrior/Dead.png',
+                        imageSrc:'./Game Assets/SkeletonWarrior/Dead.png',
                         reverseSprite:false,
                       },
                   },  
