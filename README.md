@@ -32,7 +32,8 @@ User Stories:
 - Feature 7:  Customization Options: Implement customization features that allow users to personalize their characters' appearance and abilities, adding depth to the gameplay experience.
 - Feature 8:  Endless Mode: Introduce an endless mode where players can continuously face waves of enemies and bosses, testing their skills and endurance.
 - Feature 9: Community Challenges: Create community-driven challenges and events where players can collaborate or compete to earn rewards and recognition within the game.
-
+### Bugs
+- Game is scaled to refresh rate so it would run faster at higher refresh rate
 ## Technologies Used
 - HTML
 - CSS
